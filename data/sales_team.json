@@ -1,0 +1,113 @@
+{
+  "sales_manager": {
+    "id": "MGR-01",
+    "name": "Hoàng Đức Thắng",
+    "role": "Trưởng phòng Kinh doanh",
+    "email": "thang.hd@namvietsoft.vn",
+    "approval_scope": [
+      "Tranh chấp phân công giữa các NVKD",
+      "Hồ sơ trùng lặp đa chi nhánh / đa khu vực",
+      "Cảnh báo cơ hội bị bỏ quên quá SLA (> 7 ngày)",
+      "Dự án quy mô lớn hoặc ngoại lệ chính sách"
+    ]
+  },
+  "sales_reps": [
+    {
+      "id": "NVKD-01",
+      "name": "Nguyễn Minh Quân",
+      "region": "Miền Bắc",
+      "region_aliases": ["hà nội", "bắc ninh", "hải phòng", "hải dương", "vĩnh phúc", "thái nguyên", "hưng yên", "quảng ninh", "miền bắc"],
+      "industries": ["Sản xuất nhẹ", "Kho vận & Logistics", "Xây dựng & Kỹ thuật"],
+      "product_focus": ["NV-INV", "NV-SUITE", "NV-ACC"],
+      "weekly_capacity": 95,
+      "current_active_leads": 58,
+      "avg_response_hours": 2.1,
+      "email": "quan.nm@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-02",
+      "name": "Trần Ngọc Mai",
+      "region": "Miền Bắc",
+      "region_aliases": ["hà nội", "bắc ninh", "hải phòng", "hà nam", "nam định", "miền bắc"],
+      "industries": ["Thương mại", "Bán lẻ & F&B", "Nông sản & Phân phối"],
+      "product_focus": ["NV-ACC", "NV-INV", "NV-CRM"],
+      "weekly_capacity": 95,
+      "current_active_leads": 64,
+      "avg_response_hours": 1.8,
+      "email": "mai.tn@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-03",
+      "name": "Lê Quang Khải",
+      "region": "Miền Bắc",
+      "region_aliases": ["hà nội", "hải phòng", "quảng ninh", "miền bắc"],
+      "industries": ["Dịch vụ B2B", "Công nghệ", "Giáo dục & Tư vấn", "Y tế tư nhân"],
+      "product_focus": ["NV-CRM", "NV-HRM", "NV-SUITE"],
+      "weekly_capacity": 90,
+      "current_active_leads": 52,
+      "avg_response_hours": 2.4,
+      "email": "khai.lq@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-04",
+      "name": "Phạm Thảo Vy",
+      "region": "Miền Nam",
+      "region_aliases": ["tp.hcm", "hồ chí minh", "hcm", "sài gòn", "bình dương", "đồng nai", "long an", "bà rịa vũng tàu", "đông nam bộ", "miền nam"],
+      "industries": ["Thương mại", "Bán lẻ & F&B"],
+      "product_focus": ["NV-INV", "NV-CRM", "NV-ACC"],
+      "weekly_capacity": 95,
+      "current_active_leads": 71,
+      "avg_response_hours": 1.9,
+      "email": "vy.pt@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-05",
+      "name": "Võ Hoàng Nam",
+      "region": "Miền Nam",
+      "region_aliases": ["tp.hcm", "hồ chí minh", "hcm", "bình dương", "đồng nai", "tây ninh", "đông nam bộ", "miền nam"],
+      "industries": ["Sản xuất nhẹ", "Kho vận & Logistics", "Xây dựng & Kỹ thuật"],
+      "product_focus": ["NV-ACC", "NV-SUITE", "NV-INV"],
+      "weekly_capacity": 95,
+      "current_active_leads": 60,
+      "avg_response_hours": 2.5,
+      "email": "nam.vh@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-06",
+      "name": "Đặng Thu Hiền",
+      "region": "Miền Nam",
+      "region_aliases": ["tp.hcm", "hồ chí minh", "hcm", "bình dương", "đồng nai", "miền nam"],
+      "industries": ["Dịch vụ B2B", "Công nghệ", "Giáo dục & Tư vấn", "Y tế tư nhân", "Bất động sản SME"],
+      "product_focus": ["NV-CRM", "NV-HRM", "NV-SUITE"],
+      "weekly_capacity": 90,
+      "current_active_leads": 63,
+      "avg_response_hours": 2.0,
+      "email": "hien.dt@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-07",
+      "name": "Bùi Quốc Bảo",
+      "region": "Miền Trung",
+      "region_aliases": ["đà nẵng", "huế", "quảng nam", "khánh hòa", "nha trang", "đắk lắk", "bình định", "nghệ an", "thanh hóa", "miền trung", "tây nguyên"],
+      "industries": ["Thương mại", "Bán lẻ & F&B", "Dịch vụ B2B", "Sản xuất nhẹ", "Kho vận & Logistics", "Giáo dục & Tư vấn"],
+      "product_focus": ["NV-ACC", "NV-CRM", "NV-INV", "NV-HRM"],
+      "weekly_capacity": 85,
+      "current_active_leads": 44,
+      "avg_response_hours": 2.2,
+      "email": "bao.bq@namvietsoft.vn"
+    },
+    {
+      "id": "NVKD-08",
+      "name": "Huỳnh Kim Ngân",
+      "region": "Miền Tây & Đa chi nhánh",
+      "region_aliases": ["cần thơ", "long an", "tiền giang", "an giang", "đồng tháp", "kiên giang", "vĩnh long", "miền tây", "đbscl", "toàn quốc", "đa chi nhánh"],
+      "industries": ["Nông sản & Phân phối", "Thương mại", "Bán lẻ & F&B", "Kho vận & Logistics", "Dịch vụ B2B"],
+      "product_focus": ["NV-SUITE", "NV-ACC", "NV-INV", "NV-HRM"],
+      "weekly_capacity": 85,
+      "current_active_leads": 48,
+      "avg_response_hours": 2.0,
+      "email": "ngan.hk@namvietsoft.vn"
+    }
+  ]
+}
+

@@ -1,0 +1,56 @@
+{
+  "version": "NV-RULES-2026.11",
+  "deduplication": {
+    "description": "Quy tắc nhận diện hồ sơ trùng và gom nhóm theo doanh nghiệp (kể cả viết tắt, alias, đa người đăng ký).",
+    "legal_prefixes": [
+      "công ty tnhh một thành viên", "công ty tnhh mtv", "công ty tnhh", "cty tnhh",
+      "công ty cổ phần", "cty cp", "công ty cp", "công ty", "cty", "tập đoàn", "doanh nghiệp tư nhân", "dntn",
+      "tnhh", "mtv", "cp", "jsc", "corp", "co.", "ltd", "limited", "company", "group"
+    ],
+    "business_descriptors": [
+      "thương mại dịch vụ", "thương mại và dịch vụ", "tm dv", "tm-dv", "tmdv",
+      "thương mại", "dịch vụ", "sản xuất", "xây dựng", "công nghệ", "giải pháp",
+      "kỹ thuật", "đầu tư", "phát triển", "quốc tế", "việt nam", "vietnam", "trading", "solutions", "medical",
+      "thiết bị y tế", "y tế", "thiết bị", "logistics", "thời trang", "nông sản sạch", "nông sản",
+      "kiến trúc", "giáo dục", "anh ngữ", "phần mềm", "tư vấn", "du lịch", "khách sạn",
+      "cơ khí chính xác", "cơ khí", "nhà máy", "thực phẩm xanh", "thực phẩm", "tiệm bánh ngọt", "bánh ngọt"
+    ],
+    "free_email_domains": [
+      "gmail.com", "yahoo.com", "yahoo.com.vn", "hotmail.com", "outlook.com", "icloud.com", "live.com"
+    ],
+    "similarity_threshold": 0.72,
+    "allow_acronym_match": true
+  },
+  "completeness_and_icp": {
+    "required_fields": ["company_name", "contact", "region", "industry", "need_description"],
+    "enrichment_fields": ["company_size", "budget_vnd", "timeline"],
+    "sme_size_min": 10,
+    "sme_size_max": 500,
+    "incomplete_but_promising_rule": "Nếu hồ sơ thiếu thông tin (quy mô, ngân sách, chi tiết module) NHƯNG có tín hiệu đúng ngành/nhu cầu SME hoặc không vi phạm Out-of-Scope -> KHÔNG ĐƯỢC LOẠI BỎ; chuyển nhánh Tạo câu hỏi / Thông điệp tiếp cận (Draft) để NVKD liên hệ bổ sung."
+  },
+  "scoring_weights": {
+    "product_fit_max": 40,
+    "icp_size_industry_max": 20,
+    "need_clarity_urgency_max": 20,
+    "completeness_contact_max": 10,
+    "budget_alignment_max": 10,
+    "out_of_scope_cap_score": 22,
+    "tiers": [
+      { "tier": "A", "min_score": 80, "label": "Ưu tiên Rất cao (Hot)", "sla_hours": 2 },
+      { "tier": "B", "min_score": 60, "label": "Ưu tiên Cao (Warm)", "sla_hours": 4 },
+      { "tier": "C", "min_score": 40, "label": "Cần khai thác bổ sung / Nuôi dưỡng", "sla_hours": 24 },
+      { "tier": "D", "min_score": 0, "label": "Không phù hợp / Tạm loại (Disqualified)", "sla_hours": 0 }
+    ]
+  },
+  "routing_and_escalation": {
+    "neglected_threshold_days": 7,
+    "vip_budget_threshold_vnd": 250000000,
+    "workload_warning_pct": 80,
+    "escalation_triggers": [
+      "Tranh chấp phân công giữa 2 NVKD trong lịch sử liên hệ",
+      "Hồ sơ trùng đa nguồn thuộc các khu vực/chi nhánh khác nhau",
+      "Cơ hội từng bị bỏ quên quá 7 ngày chưa có phản hồi chăm sóc",
+      "Dự án quy mô lớn (> 250 triệu hoặc > 400 nhân sự) cần xác nhận nguồn lực"
+    ]
+  }
+}

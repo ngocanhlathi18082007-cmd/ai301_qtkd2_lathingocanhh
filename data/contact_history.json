@@ -1,0 +1,114 @@
+{
+  "reference_date": "2026-11-11",
+  "sla_neglected_days": 7,
+  "records": [
+    {
+      "history_id": "HIST-001",
+      "company_name": "Công ty TNHH Thương mại An Phát",
+      "aliases": [
+        "An Phát Co.",
+        "An Phát Trading",
+        "Cty An Phát"
+      ],
+      "tax_id": "0314567890",
+      "domain": "anphat.vn",
+      "phone": "0903112233",
+      "region": "TP.HCM",
+      "industry": "Thương mại",
+      "assigned_rep_id": "NVKD-04",
+      "assigned_rep_name": "Phạm Thảo Vy",
+      "last_contact_date": "2026-11-08",
+      "days_since_last_contact": 3,
+      "stage": "Đang tư vấn - Đã hẹn Demo NV-INV",
+      "dispute_flag": false,
+      "notes": "Đã trao đổi với Trưởng phòng Thu mua (chị Hạnh), dự kiến demo tuần này."
+    },
+    {
+      "history_id": "HIST-002",
+      "company_name": "Công ty Cổ phần Dịch vụ Logistics Đông Á",
+      "aliases": [
+        "Đông Á Logistics",
+        "DAL Corp",
+        "Cty Đông Á"
+      ],
+      "tax_id": "0108877665",
+      "domain": "donga-logistics.vn",
+      "phone": "0912445566",
+      "region": "Hà Nội",
+      "industry": "Kho vận & Logistics",
+      "assigned_rep_id": "NVKD-01",
+      "assigned_rep_name": "Nguyễn Minh Quân",
+      "last_contact_date": "2026-10-27",
+      "days_since_last_contact": 15,
+      "stage": "Mới tiếp nhận - Chưa phản hồi lại sau báo giá sơ bộ",
+      "dispute_flag": false,
+      "notes": "CẢNH BÁO: Quá hạn chăm sóc 15 ngày chưa có log gọi lại."
+    },
+    {
+      "history_id": "HIST-003",
+      "company_name": "Công ty TNHH Công nghệ Minh Tâm",
+      "aliases": [
+        "Minh Tâm Tech",
+        "MT Solutions",
+        "Minh Tam Co"
+      ],
+      "tax_id": "0319988776",
+      "domain": "minhtamtech.vn",
+      "phone": "0988776655",
+      "region": "TP.HCM",
+      "industry": "Công nghệ",
+      "assigned_rep_id": "NVKD-06",
+      "assigned_rep_name": "Đặng Thu Hiền",
+      "secondary_claim_rep_id": "NVKD-03",
+      "secondary_claim_rep_name": "Lê Quang Khải",
+      "last_contact_date": "2026-11-05",
+      "days_since_last_contact": 6,
+      "stage": "Tranh chấp quyền chăm sóc (Văn phòng HN & Trụ sở HCM)",
+      "dispute_flag": true,
+      "notes": "NVKD-03 đã gửi mail tiếp cận đầu tháng qua chi nhánh Hà Nội; NVKD-06 đang chăm sóc trụ sở chính TP.HCM."
+    },
+    {
+      "history_id": "HIST-004",
+      "company_name": "Công ty TNHH Thực phẩm Xanh Việt Food",
+      "aliases": [
+        "Việt Food",
+        "VietFood Co",
+        "Thuc Pham Viet Food"
+      ],
+      "tax_id": "0312233445",
+      "domain": "vietfood.vn",
+      "phone": "0909887744",
+      "region": "Bình Dương",
+      "industry": "Bán lẻ & F&B",
+      "assigned_rep_id": "NVKD-04",
+      "assigned_rep_name": "Phạm Thảo Vy",
+      "last_contact_date": "2026-10-20",
+      "days_since_last_contact": 22,
+      "stage": "Bị bỏ quên sau hội thảo tháng 10",
+      "dispute_flag": false,
+      "notes": "CẢNH BÁO: Khách từng quan tâm NamViet StockOPS nhưng chưa được gọi chốt lịch."
+    },
+    {
+      "history_id": "HIST-005",
+      "company_name": "Công ty Cổ phần Dược phẩm Tâm An",
+      "aliases": [
+        "Dược Tâm An",
+        "Tam An Pharma",
+        "TamAn Co"
+      ],
+      "tax_id": "0318899001",
+      "domain": "tamanpharma.vn",
+      "phone": "0901223344",
+      "region": "TP.HCM",
+      "industry": "Y tế tư nhân",
+      "assigned_rep_id": "NVKD-06",
+      "assigned_rep_name": "Đặng Thu Hiền",
+      "last_contact_date": "2026-10-15",
+      "days_since_last_contact": 27,
+      "stage": "DNC - Khách hàng từ chối tiếp nhận / Đã chốt đối tác khác",
+      "dnc_flag": true,
+      "dispute_flag": false,
+      "notes": "DNC: Khách đã gửi email đề nghị không liên hệ lại (Do Not Contact)."
+    }
+  ]
+}

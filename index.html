@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAM VIỆT — AI Sales Lead Agent</title>
+  <link rel="stylesheet" href="styles.css?v=20261118_07" />
+</head>
+<body>
+
+  <!-- ==================== HEADER BAR ==================== -->
+  <header class="topbar-header">
+    <div class="topbar-inner">
+      <!-- Left: Logo & Brand Name -->
+      <div class="brand-item" id="brandLogoBtn" style="cursor:pointer;" title="Về trang Giới thiệu">
+        <div class="brand-asterisk-circle">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round">
+            <line x1="12" y1="2" x2="12" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+            <line x1="19.07" y1="4.93" x2="4.93" y2="19.07"></line>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-name-main">NAM VIỆT</span>
+          <span class="brand-tagline">AI Sales Lead Agent</span>
+        </div>
+      </div>
+
+      <!-- Center: 5 Navigation Tabs (Phần Feedback là phần 5) -->
+      <nav class="nav-pill-container" role="tablist">
+        <button class="nav-tab-pill active" data-tab="tab-intro" type="button">1. Giới thiệu</button>
+        <button class="nav-tab-pill" data-tab="tab-workflow" type="button">2. Quy trình</button>
+        <button class="nav-tab-pill" data-tab="tab-intake" type="button">3. Xử lý Dữ liệu</button>
+        <button class="nav-tab-pill" data-tab="tab-dashboard" type="button">4. Báo cáo &amp; Dashboard</button>
+        <button class="nav-tab-pill" data-tab="tab-feedback" type="button">5. Feedback</button>
+      </nav>
+
+      <!-- Right: Status Badges & Settings -->
+      <div class="header-right-group">
+        <span class="pill-badge">Bộ não Local</span>
+        <span class="pill-badge">Chế độ Tĩnh (Chỉ CSV nội bộ)</span>
+        <button id="btnOpenLlmModal" class="pill-badge btn-clickable" type="button">
+          <span class="dot-live" id="llmStatusDot"></span>
+          <span id="llmStatusText">Cấu hình AI</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN APPLICATION CONTAINER ==================== -->
+  <main class="app-main-viewport">
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- TRANG 1: 1. GIỚI THIỆU (NỀN TẢNG XỬ LÝ DỮ LIỆU & BÁO CÁO AI) -->
+    <!-- ============================================================== -->
+    <section id="tab-intro" class="app-page-view active">
+      <!-- HERO EXECUTIVE SHOWCASE -->
+      <div class="hero-executive-canvas">
+        <div class="hero-executive-badge">
+          <span class="badge-sparkle">✦</span>
+          <span>NAM VIỆT AI DATA AGENT • TRÍ TUỆ NHÂN TẠO PHÂN TÍCH &amp; BÁO CÁO ĐIỀU HÀNH</span>
+          <span class="badge-dot-live">● Sẵn sàng</span>
+        </div>
+
+        <h1 class="hero-headline-glamour">
+          Dữ liệu Bảng tính Thông minh –<br />
+          <span class="gradient-text-rose">Báo cáo &amp; Dashboard Tự động</span>
+        </h1>
+
+        <p class="hero-lead-summary">
+          Trợ lý AI Agent chuyên sâu giúp bạn tự động hóa việc tiếp nhận bất kỳ file dữ liệu nào (Excel .xlsx, .xls, CSV, TSV, Google Sheets), làm sạch, phân tích đa chiều, tổng hợp chỉ số KPI cốt lõi và kiến tạo Dashboard trực quan hóa cùng Báo cáo chuyên sâu cho Ban Lãnh đạo chỉ trong tích tắc.
+        </p>
+
+        <div class="hero-action-toolbar">
+          <button id="btnHeroStart" class="btn-hero-primary" type="button">
+            <span>BẮT ĐẦU NGAY</span>
+            <span class="btn-arrow-circle" id="btnHeroArrow">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </button>
+          <button id="btnIntroLoad50" class="btn-hero-secondary" type="button">
+            ⚡ Nạp Thử File Mẫu Phân Tích (50 dòng)
+          </button>
+          <button id="btnIntroGoIntake" class="btn-hero-ghost" type="button">
+            📂 Tải File CSV / Excel của Bạn
+          </button>
+        </div>
+
+        <!-- 4 EXECUTIVE METRIC COUNTERS (DẢI CHỈ SỐ CAO CẤP) -->
+        <div class="executive-metrics-strip mt-20">
+          <div class="exec-metric-item">
+            <div class="exec-metric-num">100%</div>
+            <div class="exec-metric-label">Tương thích Đa tệp tin</div>
+            <small class="exec-metric-sub">Excel .xlsx/.xls • CSV • TSV</small>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-item">
+            <div class="exec-metric-num">100%</div>
+            <div class="exec-metric-label">Dữ liệu Thực tế từ File</div>
+            <small class="exec-metric-sub">Bảo toàn nguyên bản dữ liệu</small>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-item">
+            <div class="exec-metric-num">4+</div>
+            <div class="exec-metric-label">Biểu đồ Trực quan hóa</div>
+            <small class="exec-metric-sub">Tròn • Cột • Thanh • Tiến trình</small>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-item">
+            <div class="exec-metric-num">1-Click</div>
+            <div class="exec-metric-label">Xuất Báo cáo Điều hành</div>
+            <small class="exec-metric-sub">Excel • CSV • In PDF • HTML</small>
+          </div>
+        </div>
+
+        <!-- BENTO SHOWCASE GRID (4 THẺ TÍNH NĂNG TƯƠNG TÁC CAO CẤP) -->
+        <div class="bento-grid-showcase mt-24">
+          <!-- Bento Card 1: Tiếp Nhận & Chuẩn Hóa Mọi Tệp Tin -->
+          <div class="bento-card bento-glass-card" data-go-tab="tab-intake" style="cursor:pointer;" title="Bấm sang trang nạp dữ liệu">
+            <div class="bento-card-top">
+              <div class="bento-icon-badge bento-icon-purple">📁</div>
+              <span class="bento-tag">Universal Input</span>
+            </div>
+            <h3 class="bento-title">Đọc &amp; Xử Lý Mọi Tệp Tin</h3>
+            <p class="bento-desc">Hỗ trợ tự động giải mã mọi định dạng file bảng tính tiếng Việt, xử lý file nhiều sheet, dán text thô và nhận diện chính xác 100% cấu trúc cột:</p>
+            <div class="bento-pill-group">
+              <span class="bento-pill active">Excel .XLSX / .XLS</span>
+              <span class="bento-pill">.CSV Tiếng Việt</span>
+              <span class="bento-pill">Google Sheets</span>
+              <span class="bento-pill">Dán trực tiếp</span>
+            </div>
+            <div class="bento-card-link">Tải file của bạn ngay ↗</div>
+          </div>
+
+          <!-- Bento Card 2: AI Analytics & Dashboard Động -->
+          <div class="bento-card bento-pink-gradient-card" data-go-tab="tab-dashboard" style="cursor:pointer;" title="Bấm mở Trung tâm Dashboard">
+            <div class="bento-card-top">
+              <div class="bento-agent-status">
+                <span class="pulse-ring"></span>
+                <span class="pulse-dot"></span>
+                <span class="status-text">AGENT ĐANG SẴN SÀNG</span>
+              </div>
+              <span class="bento-tag">BI Engine v2.5</span>
+            </div>
+            <h3 class="bento-title text-white">Dashboard &amp; BI Tự Động</h3>
+            <p class="bento-desc text-white-dim">Tự động phát hiện cột doanh số, số lượng, mặt hàng và địa bàn để kiến tạo các biểu đồ phân tích trực quan:</p>
+            <div class="bento-stepper-mini">
+              <span>Nạp File</span>
+              <i class="arr">➔</i>
+              <span>Nhận Diện Cột</span>
+              <i class="arr">➔</i>
+              <span>Tính KPI</span>
+              <i class="arr">➔</i>
+              <span>Vẽ Biểu Đồ</span>
+            </div>
+            <div class="bento-card-link text-white">Xem Báo cáo &amp; Dashboard ↗</div>
+          </div>
+
+          <!-- Bento Card 3: Báo Cáo Phân Tích Chuyên Sâu -->
+          <div class="bento-card bento-dark-card" data-go-tab="tab-dashboard" style="cursor:pointer;" title="Bấm xem Báo cáo Phân tích Chuyên sâu">
+            <div class="bento-card-top">
+              <div class="bento-quote-avatar">📑</div>
+              <span class="bento-tag bento-tag-warning">Executive Report</span>
+            </div>
+            <blockquote class="bento-quote">
+              “Tự động tổng hợp chỉ số điều hành, đánh giá độ toàn vẹn dữ liệu, phân tích cơ cấu doanh số và đưa ra kiến nghị chiến lược sẵn sàng in ấn hoặc lưu PDF.”
+            </blockquote>
+            <div class="bento-quote-author">
+              <strong>Báo Cáo Phân Tích Điều Hành</strong>
+              <small>Tóm tắt quản trị, Nhận định AI &amp; Khuyến nghị</small>
+            </div>
+          </div>
+
+          <!-- Bento Card 4: Tra Cứu & Bảo Toàn Dữ Liệu Gốc -->
+          <div class="bento-card bento-glass-card" data-go-tab="tab-dashboard" style="cursor:pointer;" title="Bấm xem bảng dữ liệu chi tiết">
+            <div class="bento-card-top">
+              <div class="bento-icon-badge">📋</div>
+              <span class="bento-tag">100% Data Fidelity</span>
+            </div>
+            <h3 class="bento-title">Bảo Toàn 100% Cột &amp; Dòng</h3>
+            <p class="bento-desc">
+              Bảng dữ liệu tương tác đầy đủ tất cả các cột của file tải lên. Tìm kiếm nhanh theo mọi trường, xem chi tiết từng dòng dữ liệu và xuất file tiện lợi:
+            </p>
+            <div class="bento-pill-group">
+              <span class="bento-pill">Hiển thị 100% cột</span>
+              <span class="bento-pill">Tìm kiếm toàn văn</span>
+              <span class="bento-pill">Xem dòng chi tiết</span>
+              <span class="bento-pill">Xuất Excel / CSV</span>
+            </div>
+            <div class="bento-card-link">Khám phá Bảng dữ liệu chi tiết ↗</div>
+          </div>
+        </div>
+
+        <!-- TICKER MARQUEE STRIP HIỆN ĐẠI -->
+        <div class="ticker-banner-strip mt-24" aria-hidden="true">
+          <div class="ticker-scroll-content">
+            <span>✦ AI DATA AGENT</span>
+            <span>✦ BÁO CÁO ĐIỀU HÀNH CHUYÊN SÂU</span>
+            <span>✦ DASHBOARD TRỰC QUAN HÓA TỰ ĐỘNG</span>
+            <span>✦ 100% DỮ LIỆU THỰC TẾ TỪ FILE</span>
+            <span>✦ PHÂN TÍCH ĐA CHIỀU</span>
+            <span>✦ TƯƠNG THÍCH EXCEL &amp; CSV</span>
+            <span>✦ IN ẤN &amp; XUẤT FILE 1-CLICK</span>
+            <span>✦ AI DATA AGENT</span>
+            <span>✦ BÁO CÁO ĐIỀU HÀNH CHUYÊN SÂU</span>
+            <span>✦ DASHBOARD TRỰC QUAN HÓA TỰ ĐỘNG</span>
+            <span>✦ 100% DỮ LIỆU THỰC TẾ TỪ FILE</span>
+            <span>✦ PHÂN TÍCH ĐA CHIỀU</span>
+          </div>
+        </div>
+
+        <!-- ABOUT SECTION CAO CẤP (NỘI DUNG MỚI CHUYÊN NGHIỆP) -->
+        <div class="about-bottom-wrap mt-24">
+          <div class="about-grid-two">
+            <div class="about-left-block">
+              <div class="about-star-label">
+                <span class="orange-star">✦</span> VỀ NAM VIỆT AI AGENT &amp; SỨ MỆNH NỀN TẢNG
+              </div>
+              <p class="about-snippet">
+                Biến mọi bảng tính thô thành Dashboard trực quan và Báo cáo điều hành chuẩn mực, giúp ban giám đốc và các phòng ban ra quyết định kinh doanh chính xác dựa trên dữ liệu thực tế.
+              </p>
+              <div class="about-buttons-row">
+                <button class="btn-orange-pill" data-go-tab="tab-intake" type="button">
+                  📦 Vào Studio Xử Lý Dữ Liệu
+                </button>
+              </div>
+            </div>
+
+            <div class="about-right-block">
+              <h2>Chúng tôi là Nam Việt AI Agent.<br />Không chỉ hiển thị số liệu — Chúng tôi tối ưu toàn bộ chuỗi giá trị phân tích dữ liệu doanh nghiệp.</h2>
+              <p>
+                Mỗi ngày, các doanh nghiệp phải tiếp nhận hàng chục bảng tính từ nhiều nguồn khác nhau với cấu trúc và định dạng không đồng nhất. AI Agent tự động hóa toàn bộ chu trình: Tiếp nhận tệp tin đa định dạng ➔ Nhận diện và làm sạch cấu trúc ➔ Tính toán chỉ số tài chính và sản lượng ➔ Trực quan hóa trên 4 biểu đồ đa chiều ➔ Tổng hợp Báo cáo Phân tích chuyên sâu sẵn sàng trình chiếu và in ấn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TRANG 2: 2. QUY TRÌNH (KIẾN TRÚC ĐIỀU HÀNH CHUYÊN NGHIỆP) -->
+    <!-- ============================================================== -->
+    <section id="tab-workflow" class="app-page-view">
+      <div class="page-content-container">
+        <!-- Page Header -->
+        <div class="page-header-row">
+          <div>
+            <div class="eyebrow-chip">
+              <span class="eyebrow-asterisk">✦</span>
+              <span>TRANG 2 • KIẾN TRÚC ĐIỀU HÀNH 6 GIAI ĐOẠN KHÉP KÍN</span>
+            </div>
+            <h1 class="page-header-title">Quy trình Kiểm soát &amp; Phân bổ AI Tự động</h1>
+            <p class="page-header-sub">
+              Khám phá trọn vẹn 6 trạm kiểm soát chất lượng từ dữ liệu thô đa nguồn đến Dashboard điều hành và phê duyệt Trưởng phòng.
+            </p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn-outline-pill" data-go-tab="tab-intro" type="button">← Về Giới thiệu</button>
+            <button class="btn-start-action" data-go-tab="tab-intake" type="button">SANG TRANG NHẬP DỮ LIỆU</button>
+            <button class="btn-arrow-action" data-go-tab="tab-intake" type="button" aria-label="Sang trang nhập dữ liệu">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Top Interactive Pipeline Ribbon (6 Connected Nodes) -->
+        <div class="wf-pipeline-ribbon mt-16">
+          <div class="wf-ribbon-node active" data-step="1">
+            <div class="wf-ribbon-circle">01</div>
+            <div class="wf-ribbon-text">
+              <strong>Nạp Dữ liệu</strong>
+              <small>CSV / XLSX / GSheet</small>
+            </div>
+          </div>
+          <div class="wf-ribbon-connector"></div>
+
+          <div class="wf-ribbon-node" data-step="2">
+            <div class="wf-ribbon-circle">02</div>
+            <div class="wf-ribbon-text">
+              <strong>Đối soát Cấu trúc</strong>
+              <small>Auto-Mapping Schema</small>
+            </div>
+          </div>
+          <div class="wf-ribbon-connector"></div>
+
+          <div class="wf-ribbon-node" data-step="3">
+            <div class="wf-ribbon-circle">03</div>
+            <div class="wf-ribbon-text">
+              <strong>Làm sạch Đa tầng</strong>
+              <small>Chuẩn hóa +84➔0</small>
+            </div>
+          </div>
+          <div class="wf-ribbon-connector"></div>
+
+          <div class="wf-ribbon-node" data-step="4">
+            <div class="wf-ribbon-circle">04</div>
+            <div class="wf-ribbon-text">
+              <strong>AI 5 Kỹ năng</strong>
+              <small>Chấm điểm &amp; Lọc trùng</small>
+            </div>
+          </div>
+          <div class="wf-ribbon-connector"></div>
+
+          <div class="wf-ribbon-node" data-step="5">
+            <div class="wf-ribbon-circle">05</div>
+            <div class="wf-ribbon-text">
+              <strong>Kiểm chứng &amp; HITL</strong>
+              <small>Trưởng phòng duyệt VIP</small>
+            </div>
+          </div>
+          <div class="wf-ribbon-connector"></div>
+
+          <div class="wf-ribbon-node" data-step="6">
+            <div class="wf-ribbon-circle">06</div>
+            <div class="wf-ribbon-text">
+              <strong>Dashboard &amp; HTML</strong>
+              <small>5 Biểu đồ BI độc lập</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Columns: Left Interactive Station Console + Right 6 Cards Grid -->
+        <div class="workflow-two-col-layout mt-18">
+          <!-- Left: Stage Station Console Card -->
+          <div class="wf-preview-card" id="wfPreviewCard">
+            <div class="wf-card-top-header">
+              <span class="wf-preview-badge" id="wfBadgeStep">BƯỚC 03 • ĐÃ SẠCH?</span>
+              <div class="wf-live-dot-tag">
+                <span class="status-dot-pulse">●</span>
+                <span id="wfFooterStatus">Sẵn sàng trước khi Process</span>
+              </div>
+            </div>
+
+            <div class="wf-card-headline-box mt-10">
+              <h3 class="wf-preview-en-title" id="wfEnTitle">Normalize &amp; Stabilize</h3>
+              <h4 class="wf-preview-vn-title" id="wfVnTitle">Làm sạch Dữ liệu (Đã sạch &amp; ổn?)</h4>
+              <p class="wf-preview-desc" id="wfStepDesc">
+                Chuẩn hóa SĐT (+84➔0), ngày YYYY-MM-DD, khu vực, mã SP. Có thể làm sạch lại đến khi ổn định hoàn toàn.
+              </p>
+            </div>
+
+            <!-- 3 Specs Metrics Row -->
+            <div class="wf-specs-grid mt-14">
+              <div class="wf-spec-cell">
+                <span class="spec-label">TỐC ĐỘ XỬ LÝ (SLA)</span>
+                <strong class="spec-value" id="wfSpecSla">&lt; 0.2s</strong>
+              </div>
+              <div class="wf-spec-cell">
+                <span class="spec-label">CƠ CHẾ GUARDRAIL</span>
+                <strong class="spec-value" id="wfSpecGuard">100% Chống trùng</strong>
+              </div>
+              <div class="wf-spec-cell">
+                <span class="spec-label">CHUẨN ĐẦU RA</span>
+                <strong class="spec-value" id="wfSpecOutput">Clean Schema JSON</strong>
+              </div>
+            </div>
+
+            <!-- Input / Output Contract Visualizer -->
+            <div class="wf-contract-card mt-14">
+              <div class="wf-contract-row">
+                <span class="contract-chip input">INPUT</span>
+                <span class="contract-text" id="wfContractIn">Bất kỳ file CSV, XLSX hoặc Google Sheet</span>
+              </div>
+              <div class="wf-contract-arrow">↓</div>
+              <div class="wf-contract-row">
+                <span class="contract-chip output">OUTPUT</span>
+                <span class="contract-text" id="wfContractOut">Hồ sơ Leads chuẩn 15 trường thông tin + MST</span>
+              </div>
+            </div>
+
+            <div class="wf-card-action-row mt-16">
+              <button class="btn-orange-pill w-full-mobile" data-go-tab="tab-intake" type="button">
+                Nạp Dữ liệu &amp; Chạy Thử Bước Này ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: 6 Interactive Step Cards Grid -->
+          <div class="wf-cards-grid">
+            <!-- Card 1 -->
+            <div class="wf-grid-card-item wf-step-row-item" data-step="1">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[01]</span>
+                <span class="wf-card-icon">📁</span>
+              </div>
+              <h4 class="wf-card-title">Nhận File Excel / Google Sheets</h4>
+              <p class="wf-card-desc">Tự động nhận diện mọi file CSV (UTF-8, ANSI), XLSX nhiều sheet hoặc link Google Sheets công khai.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">Auto-Delimiter</span>
+                <span class="wf-tag-pill">Multi-Sheet</span>
+                <span class="wf-card-arrow" data-go-tab="tab-intake">↗</span>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="wf-grid-card-item wf-step-row-item" data-step="2">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[02]</span>
+                <span class="wf-card-icon">🛡️</span>
+              </div>
+              <h4 class="wf-card-title">Kiểm tra Định dạng (Đầu vào hợp lệ?)</h4>
+              <p class="wf-card-desc">Tự động ánh xạ 15 trường dữ liệu chuẩn (MST, Email, SĐT, Nhu cầu, Ngân sách), cảnh báo sai sót tức thì.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">15 Trường Chuẩn</span>
+                <span class="wf-tag-pill">Auto-Mapping</span>
+                <span class="wf-card-arrow" data-go-tab="tab-intake">↗</span>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="wf-grid-card-item wf-step-row-item active" data-step="3">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[03]</span>
+                <span class="wf-card-icon">✨</span>
+              </div>
+              <h4 class="wf-card-title">Làm sạch Dữ liệu (Đã sạch &amp; ổn?)</h4>
+              <p class="wf-card-desc">Chuẩn hóa SĐT (+84➔0), ngày tháng YYYY-MM-DD, khu vực, nhận diện mã sản phẩm quan tâm.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">+84➔0 SĐT</span>
+                <span class="wf-tag-pill">3 Miền Địa lý</span>
+                <span class="wf-card-arrow" data-go-tab="tab-intake">↗</span>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="wf-grid-card-item wf-step-row-item" data-step="4">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[04]</span>
+                <span class="wf-card-icon">🤖</span>
+              </div>
+              <h4 class="wf-card-title">Process (AI Agent 5 Kỹ năng)</h4>
+              <p class="wf-card-desc">Lọc trùng viết tắt (Jaro-Winkler + MST), chặn DNC/Opt-out, chấm điểm ICP 0-100đ, chia việc cho 8 NVKD.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">Jaro-Winkler</span>
+                <span class="wf-tag-pill">Cân bằng 8 Sales</span>
+                <span class="wf-card-arrow" data-go-tab="tab-dashboard">↗</span>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="wf-grid-card-item wf-step-row-item" data-step="5">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[05]</span>
+                <span class="wf-card-icon">⚖️</span>
+              </div>
+              <h4 class="wf-card-title">Verify &amp; 2 Lớp Chốt chặn HITL</h4>
+              <p class="wf-card-desc">Kiểm chứng 5 tiêu chuẩn an toàn; kích hoạt [HITL 1] Trưởng phòng duyệt VIP và [HITL 2] NVKD duyệt email.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">[HITL 1] Trưởng phòng</span>
+                <span class="wf-tag-pill">[HITL 2] Sales</span>
+                <span class="wf-card-arrow" data-go-tab="tab-dashboard">↗</span>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="wf-grid-card-item wf-step-row-item" data-step="6">
+              <div class="wf-card-header-bar">
+                <span class="wf-step-chip">[06]</span>
+                <span class="wf-card-icon">📊</span>
+              </div>
+              <h4 class="wf-card-title">Dashboard, Chốt Kết quả &amp; Xuất HTML</h4>
+              <p class="wf-card-desc">Trực quan hóa 5 cụm biểu đồ SVG vector, xuất báo cáo HTML độc lập, CSV Khách hàng &amp; Công việc.</p>
+              <div class="wf-card-tags">
+                <span class="wf-tag-pill">5 Biểu đồ SVG</span>
+                <span class="wf-tag-pill">Báo cáo HTML</span>
+                <span class="wf-card-arrow" data-go-tab="tab-dashboard">↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Architecture Guarantees Strip -->
+        <div class="wf-guarantees-bar mt-20">
+          <div class="wf-guarantee-item">
+            <span class="guarantee-icon">🛡️</span>
+            <div class="guarantee-info">
+              <strong>Bảo mật Nội bộ Tuyệt đối</strong>
+              <small>Chạy 100% Client-side trong trình duyệt, không rò rỉ dữ liệu.</small>
+            </div>
+          </div>
+          <div class="wf-guarantee-item">
+            <span class="guarantee-icon">🌐</span>
+            <div class="guarantee-info">
+              <strong>Tương thích 100% Mọi File</strong>
+              <small>Tự động nhận diện mọi định dạng CSV &amp; XLSX bất kỳ.</small>
+            </div>
+          </div>
+          <div class="wf-guarantee-item">
+            <span class="guarantee-icon">🎯</span>
+            <div class="guarantee-info">
+              <strong>0% Trùng lặp Khách hàng</strong>
+              <small>Đối soát đa tầng MST, Domain &amp; Tên viết tắt Alias.</small>
+            </div>
+          </div>
+          <div class="wf-guarantee-item">
+            <span class="guarantee-icon">⚖️</span>
+            <div class="guarantee-info">
+              <strong>Cân bằng Tải 8 NVKD</strong>
+              <small>Phân phối công bằng 3 miền, không vượt quá giới hạn 30 hồ sơ.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TRANG 3: 3. XỬ LÝ DỮ LIỆU (TỰ ĐỘNG CHẤP NHẬN BẤT KỲ FILE NÀO) -->
+    <!-- ============================================================== -->
+    <section id="tab-intake" class="app-page-view">
+      <div class="page-content-container">
+        <!-- Top Pipeline Stepper Strip -->
+        <div class="intake-stepper-strip">
+          <div class="stepper-nav-buttons">
+            <button class="btn-outline-pill-sm" data-go-tab="tab-intro" type="button">← Giới thiệu</button>
+            <button class="btn-outline-pill-sm" data-go-tab="tab-workflow" type="button">← Quy trình</button>
+          </div>
+
+          <div class="stepper-nodes-row">
+            <!-- Node 1: Active -->
+            <div class="step-node-box active" data-intake-step="1" title="Bước 1: Nạp file CSV/XLSX hoặc Google Sheet">
+              <span class="step-node-circle">1</span>
+              <div class="step-node-texts">
+                <strong>Nạp Sheet / File</strong>
+                <small>Excel / CSV / GSheet</small>
+              </div>
+            </div>
+            <div class="step-node-arrow">➔</div>
+
+            <!-- Node 2 -->
+            <div class="step-node-box" data-intake-step="2" title="Bước 2: Kiểm tra cấu trúc &amp; ánh xạ cột">
+              <span class="step-node-circle">2</span>
+              <div class="step-node-texts">
+                <strong>Đầu vào hợp lệ?</strong>
+                <small>Kiểm tra cấu trúc</small>
+              </div>
+            </div>
+            <div class="step-node-arrow">➔</div>
+
+            <!-- Node 3 -->
+            <div class="step-node-box" data-intake-step="3" title="Bước 3: Chẩn đoán lỗi &amp; Yêu cầu AI làm sạch dữ liệu">
+              <span class="step-node-circle">3</span>
+              <div class="step-node-texts">
+                <strong>Làm sạch Dữ liệu</strong>
+                <small>Trợ lý AI &amp; Lỗi</small>
+              </div>
+            </div>
+            <div class="step-node-arrow">➔</div>
+
+            <!-- Node 4 -->
+            <div class="step-node-box" data-intake-step="4" title="Bước 4: Kích hoạt AI Agent xử lý &amp; tạo Dashboard">
+              <span class="step-node-circle">4</span>
+              <div class="step-node-texts">
+                <strong>Process</strong>
+                <small>AI Agent xử lý</small>
+              </div>
+            </div>
+            <div class="step-node-arrow">➔</div>
+
+            <!-- Node 5 -->
+            <div class="step-node-box" data-intake-step="5" title="Bước 5: Rà soát bảng dữ liệu chi tiết">
+              <span class="step-node-circle">5</span>
+              <div class="step-node-texts">
+                <strong>Verify</strong>
+                <small>Bảng chi tiết</small>
+              </div>
+            </div>
+            <div class="step-node-arrow">➔</div>
+
+            <!-- Node 6 -->
+            <div class="step-node-box" data-intake-step="6" title="Bước 6: Xem Báo cáo phân tích chuyên sâu &amp; Xuất file">
+              <span class="step-node-circle">6</span>
+              <div class="step-node-texts">
+                <strong>Báo cáo &amp; HTML</strong>
+                <small>Chốt kết quả</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Universal File Ingestion Capability Strip (Khớp chính xác 100% mẫu ảnh) -->
+        <div class="universal-ingest-strip mt-14">
+          <div class="uis-left">
+            <div class="uis-eyebrow">
+              <span class="orange-star">✦</span> UNIVERSAL INGESTION ENGINE • TỰ ĐỘNG THÍCH ỨNG 100% MỌI FILE
+            </div>
+            <h2 class="uis-heading">Bất kỳ file CSV hay XLSX nào đều được tải lên &amp; phân tích tức thì</h2>
+            <p class="uis-body">
+              Hệ thống tự động thích ứng với mọi bảng tính: Báo cáo bán hàng, dữ liệu đơn hàng Shopee/Website, CRM khách hàng, bảng nhân sự, kho, tài chính... Dù file của bạn có bất kỳ cấu trúc hay tên cột nào, AI Agent đều tự động nhận diện, làm sạch và tạo Dashboard hoàn chỉnh mà không gặp bất kỳ lỗi nào.
+            </p>
+          </div>
+          <div class="uis-cards-col">
+            <div class="uis-pill-card">
+              <span class="uis-check-icon">✓</span>
+              <span>CSV mọi dấu ngăn cách (, ; \t |) &amp; UTF-8/ANSI</span>
+            </div>
+            <div class="uis-pill-card">
+              <span class="uis-check-icon">✓</span>
+              <span>XLSX nhiều sheet, ngày tháng &amp; số tiền tệ</span>
+            </div>
+            <div class="uis-pill-card">
+              <span class="uis-check-icon">✓</span>
+              <span>Tự động đối soát &amp; bù đắp trường thông tin</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Card for Step 1 -->
+        <div class="intake-main-yellow-card mt-16">
+          <!-- Top Card Header & Presets -->
+          <div class="intake-card-top-bar">
+            <div>
+              <h3 class="intake-card-title">Nhập Dữ liệu Đầu vào &amp; Ánh xạ Cột</h3>
+              <p class="intake-card-subtitle" style="font-size:12px;color:var(--muted);margin:3px 0 0;">
+                Tải lên file CSV/XLSX, Link Google Sheet, dán bảng trực tiếp hoặc nạp nhanh hồ sơ mẫu.
+              </p>
+            </div>
+            <div class="intake-presets-row">
+              <button id="btnPresetStandard" class="btn-preset-pill" type="button">Mẫu Chuẩn (18 leads)</button>
+              <button id="btnPresetError" class="btn-preset-pill" type="button">⚡ Mẫu Thử Lỗi (Xem Chẩn Đoán)</button>
+              <button id="btnPreset50Sales" class="btn-preset-pill active" type="button">📊 Mẫu Báo cáo 50 dòng</button>
+              <button id="btnPreset700" class="btn-preset-pill" type="button">Test 700 Leads</button>
+              <button id="btnPresetDownload" class="btn-preset-pill" type="button">Tải File Mẫu</button>
+            </div>
+          </div>
+
+          <!-- 4 Intake Mode Switcher Tabs (Ảnh 1) -->
+          <div class="intake-mode-switcher-bar mt-14">
+            <button class="intake-mode-pill active" data-intake-mode="csv" type="button">📁 File CSV / XLSX</button>
+            <button class="intake-mode-pill" data-intake-mode="gsheet" type="button">🔗 Link Google Sheet</button>
+            <button class="intake-mode-pill" data-intake-mode="paste" type="button">📋 Dán bảng Excel / Sheets</button>
+            <button class="intake-mode-pill" data-intake-mode="quick" type="button">⚡ Nhập nhanh 1 Lead</button>
+          </div>
+
+          <!-- Mode 1: File CSV / XLSX (Active by default) -->
+          <div id="panelIntakeCsv" class="intake-mode-panel mt-12">
+            <div class="dropzone-box-dashed" id="mainDropZone">
+              <div class="dropzone-center-content">
+                <div style="font-size:32px;margin-bottom:6px;color:var(--primary);">↑</div>
+                <strong style="font-size:14.5px;color:var(--ink);display:block;margin-bottom:4px;">
+                  Kéo thả file .csv hoặc .xlsx vào đây
+                </strong>
+                <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">
+                  Hỗ trợ tiếng Việt UTF-8 và file Excel nhiều sheet
+                </p>
+                <label class="btn-orange-pill" style="cursor:pointer;display:inline-flex;align-items:center;padding:9px 22px;font-size:13px;">
+                  Chọn file từ máy
+                  <input id="mainFileInput" type="file" accept=".csv,.xlsx,.tsv,.txt" hidden />
+                </label>
+              </div>
+            </div>
+
+            <div id="sheetSelectorBox" class="sheet-select-row hidden mt-10">
+              <label for="xlsxSheetSelect" style="font-weight:700;color:var(--ink);">Chọn Sheet:</label>
+              <select id="xlsxSheetSelect"></select>
+            </div>
+
+            <!-- Download sample templates row -->
+            <div class="intake-sample-download-links mt-10" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+              <button id="btnDownloadSample18Xlsx" class="btn-sample-link" type="button">📄 Tải file XLSX mẫu</button>
+              <button id="btnDownloadSample18Csv" class="btn-sample-link" type="button">📄 Tải file CSV mẫu</button>
+              <button id="btnDownload50Csv" class="btn-sample-link" type="button">📊 Tải file 50 dòng mẫu</button>
+              <button id="btnIntakeLoad50" class="btn-sample-link btn-sample-highlight" type="button">
+                ⚡ Nạp ngay 50 dòng báo cáo (Không lỗi)
+              </button>
+            </div>
+          </div>
+
+          <!-- Mode 2: Link Google Sheet -->
+          <div id="panelIntakeGsheet" class="intake-mode-panel hidden mt-12">
+            <div class="intake-gsheet-card" style="background:#fff;border:1.5px solid var(--surface-pink-border);border-radius:12px;padding:22px;">
+              <h4 style="margin:0 0 6px;font-size:14px;color:var(--ink);">Link Google Sheet công khai</h4>
+              <p style="font-size:12px;color:var(--muted);margin:0 0 14px;">
+                Đảm bảo Sheet đã bật quyền xem công khai (Chia sẻ &rarr; Bất kỳ ai có liên kết &rarr; Người xem).
+              </p>
+              <div class="gsheet-inline-form">
+                <input id="gsheetUrlInput" type="url" placeholder="https://docs.google.com/spreadsheets/d/..." style="flex:1;padding:10px 14px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-size:13px;" />
+                <button id="btnFetchGsheet" class="btn-orange-pill" type="button">Tải Sheet &amp; Phân tích</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode 3: Dán bảng Excel / Sheets -->
+          <div id="panelIntakePaste" class="intake-mode-panel hidden mt-12">
+            <div class="intake-paste-card" style="background:#fff;border:1.5px solid var(--surface-pink-border);border-radius:12px;padding:22px;">
+              <h4 style="margin:0 0 6px;font-size:14px;color:var(--ink);">Dán trực tiếp bảng từ Excel hoặc Google Sheets</h4>
+              <p style="font-size:12px;color:var(--muted);margin:0 0 10px;">
+                Chọn các ô trong Excel/Google Sheets, bấm Ctrl+C (Cmd+C) rồi dán (Ctrl+V) vào khung dưới đây:
+              </p>
+              <textarea id="pasteTableInput" rows="6" placeholder="Mã dòng&#9;Tháng&#9;Kênh bán&#9;Khu vực&#9;Sản phẩm&#9;Số đơn&#9;Doanh thu (VND)&#10;DS-001&#9;2026-07&#9;Website&#9;Miền Bắc&#9;Áo thun&#9;92&#9;22540000" style="width:100%;padding:10px 12px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-family:monospace;font-size:12px;box-sizing:border-box;resize:vertical;"></textarea>
+              <div style="margin-top:10px;display:flex;justify-content:flex-end;">
+                <button id="btnParsePastedTable" class="btn-orange-pill" type="button">
+                  Nạp dữ liệu từ bảng dán ▶
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mode 4: Nhập nhanh 1 Lead -->
+          <div id="panelIntakeQuick" class="intake-mode-panel hidden mt-12">
+            <div class="intake-quick-card" style="background:#fff;border:1.5px solid var(--surface-pink-border);border-radius:12px;padding:22px;">
+              <h4 style="margin:0 0 6px;font-size:14px;color:var(--ink);">Thử nghiệm nhanh 1 Lead đơn lẻ</h4>
+              <p style="font-size:12px;color:var(--muted);margin:0 0 14px;">
+                Nhập nhanh thông tin 1 doanh nghiệp để chạy thử kiểm chứng ICP và phân bổ NVKD.
+              </p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;">
+                <div>
+                  <label style="font-size:11.5px;font-weight:700;color:var(--ink);">Tên Doanh nghiệp *</label>
+                  <input id="quickCompanyName" type="text" value="Công ty May Mặc An Phú" style="width:100%;padding:8px 10px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-size:12.5px;box-sizing:border-box;" />
+                </div>
+                <div>
+                  <label style="font-size:11.5px;font-weight:700;color:var(--ink);">Nhu cầu / Sản phẩm *</label>
+                  <input id="quickNeed" type="text" value="Tư vấn combo ERP Quản trị Sản xuất &amp; Kho" style="width:100%;padding:8px 10px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-size:12.5px;box-sizing:border-box;" />
+                </div>
+                <div>
+                  <label style="font-size:11.5px;font-weight:700;color:var(--ink);">Khu vực</label>
+                  <select id="quickRegion" style="width:100%;padding:8px 10px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-size:12.5px;box-sizing:border-box;">
+                    <option value="Hà Nội" selected>Hà Nội (Miền Bắc)</option>
+                    <option value="TP.HCM">TP.HCM (Miền Nam)</option>
+                    <option value="Đà Nẵng">Đà Nẵng (Miền Trung)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:11.5px;font-weight:700;color:var(--ink);">Ngân sách dự kiến (VND)</label>
+                  <input id="quickBudget" type="text" value="85,000,000" style="width:100%;padding:8px 10px;border:1.5px solid var(--surface-pink-border);border-radius:8px;font-size:12.5px;box-sizing:border-box;" />
+                </div>
+              </div>
+              <div style="margin-top:12px;display:flex;justify-content:flex-end;">
+                <button id="btnRunQuickSingleLead" class="btn-orange-pill" type="button">
+                  Chạy AI Agent cho Lead này ▶
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Options Bar -->
+          <div class="intake-quick-actions-bar mt-14">
+            <label class="checkbox-auto-run">
+              <input id="chkAutoRunOnSelect" type="checkbox" checked />
+              <span>Tự động kích hoạt AI Agent &amp; tạo Dashboard ngay khi chọn file</span>
+            </label>
+          </div>
+
+          <!-- Banner status -->
+          <div id="intakeStatusBanner" class="status-banner-box hidden mt-12"></div>
+
+          <!-- Auto-Mapping & Preview Table -->
+          <div class="mapping-preview-container mt-16">
+            <div class="mapping-title-row">
+              <h4>Ánh xạ cột tự động (<span id="intakeRowCount">0</span> dòng • <span id="intakeColMappedCount">0/15</span> cột nhận diện)</h4>
+              <button id="btnToggleMapping" class="btn-preset-pill-sm" type="button">Hiện/Ẩn chi tiết cột</button>
+            </div>
+
+            <div id="mappingGrid" class="mapping-fields-grid hidden mt-10"></div>
+
+            <!-- BẢNG CHẨN ĐOÁN LỖI TỆP TIN & CHẤT LƯỢNG DỮ LIỆU (AI DATA QUALITY INSPECTOR) -->
+            <div id="fileQualityDiagnosticConsole" class="file-diagnostic-console hidden">
+              <div class="diagnostic-header-bar">
+                <div class="diagnostic-title-group">
+                  <span class="diagnostic-badge-ai">✦ AI Data Quality &amp; Error Diagnostic Engine</span>
+                  <h4 class="diagnostic-main-title">
+                    <span id="diagTitleIcon">🔍</span>
+                    <span id="diagTitleText">Chẩn Đoán Vị Trí Lỗi Trong Tệp Tin</span>
+                  </h4>
+                  <p class="diagnostic-subtitle" id="diagSubtitleText">
+                    Hệ thống đã quét toàn bộ các dòng và cột trong file: hiển thị chính xác dòng số mấy, cột nào sai và cách AI tự động sửa.
+                  </p>
+                </div>
+                <div class="diagnostic-kpi-group">
+                  <div class="diag-kpi diag-kpi-error">
+                    <span class="diag-kpi-count" id="diagCountErrors">0</span>
+                    <span class="diag-kpi-label">Lỗi sai chuẩn</span>
+                  </div>
+                  <div class="diag-kpi diag-kpi-warning">
+                    <span class="diag-kpi-count" id="diagCountWarnings">0</span>
+                    <span class="diag-kpi-label">Cảnh báo</span>
+                  </div>
+                  <div class="diag-kpi diag-kpi-fixed">
+                    <span class="diag-kpi-count" id="diagCountFixed">0</span>
+                    <span class="diag-kpi-label">AI Tự xử lý</span>
+                  </div>
+                  <div class="diag-kpi diag-kpi-valid">
+                    <span class="diag-kpi-count" id="diagCountValid">0</span>
+                    <span class="diag-kpi-label">Ô hợp lệ</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chi tiết từng vị trí lỗi -->
+              <div id="diagnosticTableWrapper" class="diagnostic-table-wrapper">
+                <div class="diagnostic-table-title-row">
+                  <span style="font-weight:750;color:#881337;font-size:12.5px;">
+                    📍 Vị Trí Cụ Thể Từng Lỗi Trong File (Dòng &amp; Cột):
+                  </span>
+                  <span style="font-size:11.5px;color:#9f1239;">
+                    💡 Các ô lỗi trên bảng xem trước bên dưới được tô màu đỏ và gắn cảnh báo
+                  </span>
+                </div>
+                <div class="table-scroll-frame" style="max-height:240px;">
+                  <table class="diagnostic-details-table">
+                    <thead>
+                      <tr>
+                        <th style="width:80px;">Vị trí (Dòng)</th>
+                        <th style="width:140px;">Cột dữ liệu</th>
+                        <th style="width:170px;">Giá trị trong file</th>
+                        <th style="width:115px;">Mức độ</th>
+                        <th>Chi tiết lỗi / Lý do không hợp lệ</th>
+                        <th>AI Đã tự động xử lý</th>
+                      </tr>
+                    </thead>
+                    <tbody id="diagnosticTableBody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- KHỐI YÊU CẦU AI CHỈNH SỬA & LÀM SẠCH DỮ LIỆU (AI COPILOT)      -->
+            <!-- ============================================================== -->
+            <div id="aiEditSectionWrapper" class="ai-edit-box-card mt-16 mb-12">
+              <div class="ai-edit-box-header">
+                <div class="ai-edit-title-group">
+                  <div class="ai-header-badge-row">
+                    <span class="ai-sparkle-pill">✦ TRỢ LÝ AI COPILOT</span>
+                    <span class="ai-mode-tag">Biến đổi trực tiếp trên bảng dữ liệu • 100% Tiếng Việt</span>
+                  </div>
+                  <h3 class="ai-edit-title">Yêu cầu AI Chỉnh sửa &amp; Làm sạch Dữ liệu</h3>
+                  <p class="ai-edit-desc">
+                    Nhập câu lệnh bằng tiếng Việt (lọc doanh thu, lấy Top N, loại bỏ dòng lỗi/thiếu thông tin, sắp xếp thứ tự, lọc theo vùng...) để AI chỉnh sửa trực tiếp trên bảng dữ liệu bên dưới trước khi tạo Dashboard.
+                  </p>
+                </div>
+                <div class="ai-edit-status-container">
+                  <span id="aiEditStatusBadge" class="ai-status-badge badge-origin">
+                    <span class="ai-status-dot">●</span> <span id="aiStatusBadgeText">Dữ liệu gốc: 100%</span>
+                  </span>
+                  <button id="btnResetAiEdits" class="btn-ai-reset" type="button" title="Khôi phục lại dữ liệu nguyên bản ban đầu từ file" disabled>
+                    ↺ Khôi phục gốc
+                  </button>
+                </div>
+              </div>
+
+              <!-- Prompt Input Bar -->
+              <div class="ai-input-container mt-12">
+                <div class="ai-input-wrapper">
+                  <span class="ai-input-icon">✨</span>
+                  <input 
+                    type="text" 
+                    id="aiPromptInput" 
+                    class="ai-prompt-input" 
+                    placeholder="Nhập yêu cầu (VD: Lọc doanh thu > 50 triệu | Sắp xếp giảm dần | Lấy top 10 dòng | Loại bỏ các dòng lỗi / thiếu thông tin...)" 
+                    autocomplete="off"
+                  />
+                  <button id="btnClearAiPrompt" class="ai-btn-clear hidden" type="button" title="Xóa nội dung nhập">✕</button>
+                </div>
+                <button id="btnExecuteAiPrompt" class="btn-ai-submit" type="button">
+                  <span>Chỉnh sửa ngay</span> 🚀
+                </button>
+              </div>
+
+              <!-- Quick Suggestion Pills -->
+              <div class="ai-quick-pills mt-10">
+                <span class="ai-quick-label">⚡ Gợi ý thao tác 1 chạm:</span>
+                <button class="ai-pill-btn" data-prompt="Lọc Top 10 bản ghi có doanh thu cao nhất" type="button">⚡ Top 10 bản ghi cao nhất</button>
+                <button class="ai-pill-btn" data-prompt="Lọc các dòng có doanh thu lớn hơn hoặc bằng 50 triệu" type="button">⚡ Doanh thu ≥ 50 triệu</button>
+                <button class="ai-pill-btn" data-prompt="Sắp xếp toàn bộ dữ liệu theo doanh thu giảm dần" type="button">⚡ Sắp xếp giảm dần</button>
+                <button class="ai-pill-btn" data-prompt="Chỉ giữ lại các dòng có dữ liệu đầy đủ, loại bỏ dòng thiếu thông tin" type="button">⚡ Làm sạch (Loại dòng thiếu)</button>
+                <button class="ai-pill-btn" data-prompt="Chỉ giữ lại các dòng hợp lệ, loại bỏ các dòng bị lỗi format" type="button">⚡ Chỉ lấy dòng hợp lệ</button>
+                <button class="ai-pill-btn" data-prompt="Sắp xếp tăng dần theo doanh thu" type="button">⚡ Sắp xếp tăng dần</button>
+                <button class="ai-pill-btn" data-prompt="Tổng doanh thu và mặt hàng nào chiếm tỷ trọng lớn nhất?" type="button">❓ Thống kê nhanh dữ liệu</button>
+              </div>
+
+              <!-- Result Feedback Card -->
+              <div id="aiPromptResultBox" class="ai-result-box hidden mt-12">
+                <div class="ai-result-header">
+                  <div class="ai-result-icon" id="aiResultIcon">✅</div>
+                  <div class="ai-result-text-group">
+                    <strong id="aiResultTitle" class="ai-result-title">AI đã thực hiện thành công</strong>
+                    <p id="aiResultMsg" class="ai-result-msg"></p>
+                  </div>
+                  <button id="btnDismissAiResult" class="ai-result-close" type="button" title="Đóng thông báo">✕</button>
+                </div>
+                <div id="aiResultExtraInfo" class="ai-result-extra hidden"></div>
+              </div>
+            </div>
+
+            <div class="table-scroll-frame mt-10">
+              <table id="previewTable" class="clean-data-table">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="run-cta-center-row mt-14">
+              <button id="btnRunAgent" class="btn-orange-pill btn-run-large" type="button">
+                ▶ Chạy AI Agent &amp; Xem kết quả
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TRANG 4: 4. BÁO CÁO & DASHBOARD (ẢNH 4 - ĐÃ NÂNG CẤP BIỂU ĐỒ CHUYÊN NGHIỆP) -->
+    <!-- ============================================================== -->
+    <section id="tab-dashboard" class="app-page-view">
+      <div class="page-content-container">
+        <!-- Top Title Bar -->
+        <div class="dash-top-hero-card">
+          <div class="dash-title-meta">
+            <div class="eyebrow-chip">
+              <span class="green-live-dot">●</span>
+              <span>TRANG 4 • BÁO CÁO &amp; DASHBOARD</span>
+            </div>
+            <h1 class="dash-hero-title">Trung tâm Điều phối &amp; Phân tích Kết quả</h1>
+            <div class="dash-active-file-indicator mt-6" style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#be185d;background:#fff1f5;padding:4px 14px;border-radius:999px;border:1px solid #fce7f3;width:fit-content;margin-top:6px;">
+              <span>📁 Tệp đang phân tích:</span>
+              <strong id="dashCurrentFileName" style="color:#881337;">Chờ nạp file</strong>
+              <span style="color:#94a3b8;">•</span>
+              <span id="dashCurrentFileMeta" style="color:#475569;font-weight:600;">100% dữ liệu thực từ tệp tin tải lên</span>
+            </div>
+          </div>
+          <div class="dash-hero-buttons">
+            <button class="btn-outline-pill" data-go-tab="tab-intake" type="button">← Quay lại Xử lý Dữ liệu</button>
+            <button id="btnDashFeedbackShortcut" class="btn-outline-pill" type="button">💬 Góp ý &amp; Phản hồi</button>
+            <button id="btnFinalizeAndExportHtml" class="btn-orange-pill" type="button">Chốt kết quả &amp; Xuất file HTML ✓</button>
+          </div>
+        </div>
+
+        <!-- EMPTY STATE KHI CHƯA TẢI FILE (Chỉ khi nào tải file lên mới hiện biểu đồ) -->
+        <div id="dashEmptyStateWrapper" class="dash-empty-wrapper mt-16">
+          <div class="dash-empty-hero-card">
+            <div class="dash-empty-icon-circle">📊</div>
+            <div class="eyebrow-chip" style="margin-bottom: 12px;">
+              <span class="badge-sparkle">✦</span>
+              <span>DASHBOARD DỮ LIỆU ĐỘNG • BẢO LƯU 100% TÍNH TRUNG THỰC DỮ LIỆU</span>
+            </div>
+            <h2 class="dash-empty-title">Chưa có dữ liệu để vẽ biểu đồ Dashboard</h2>
+            <p class="dash-empty-desc">
+              Hệ thống AI Agent hoạt động theo nguyên tắc <strong>bảo lưu dữ liệu thực</strong>. Dashboard và các biểu đồ phân tích (Tỷ lệ ưu tiên, Phân bổ theo Kênh/Vùng, Xếp hạng Mặt hàng/Sản phẩm, Trạng thái xử lý và Cân bằng tải) 
+              <strong>chỉ được khởi tạo và vẽ tương ứng chính xác sau khi bạn tải file lên</strong>. Không sử dụng dữ liệu ảo hoặc tự động suy diễn thông tin khi chưa có file.
+            </p>
+            <div class="dash-empty-actions">
+              <button class="btn-orange-pill" data-go-tab="tab-intake" type="button" style="padding: 12px 28px; font-size: 13.5px; font-weight: 800;">
+                📂 Sang Trang 3 để Tải File CSV / XLSX Ngay ➔
+              </button>
+              <button id="btnEmptyLoadSample50" class="btn-outline-pill" type="button" style="padding: 12px 22px; font-size: 13px;">
+                ⚡ Hoặc Nạp Thử File Mẫu 50 Dòng
+              </button>
+            </div>
+            <div class="dash-empty-badges-row">
+              <span class="def-badge">✓ Tự động nhận diện cột Sản phẩm, Doanh thu, Khách hàng</span>
+              <span class="def-badge">✓ Vẽ đúng mặt hàng và số liệu thực tế trong file</span>
+              <span class="def-badge">✓ Tuyệt đối không tự ý phát sinh dữ liệu ngoài file</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN DASHBOARD CONTENT (Chỉ hiển thị khi đã nạp và phân tích file) -->
+        <div id="dashContentWrapper" class="hidden">
+        <!-- Top Status Card -->
+        <div class="status-review-card mt-14">
+          <div class="status-review-left">
+            <h3 class="status-review-title">Trạng thái Rà soát &amp; Phê duyệt</h3>
+            <p class="status-review-sub">Kiểm tra các chỉ số, biểu đồ và danh sách phân công trước khi chốt kết quả.</p>
+          </div>
+          <span class="status-review-tag" id="dashReviewStatusTag">Chưa chốt kết quả</span>
+        </div>
+
+        <!-- Sub-Navigation Pills & Export Buttons -->
+        <div class="dash-subnav-row mt-14">
+          <!-- Left Sub-Tabs -->
+          <div class="dash-subnav-tabs">
+            <button class="dash-sub-pill active" data-subtab="dash-overview" type="button">📊 Tổng quan Biểu đồ</button>
+            <button class="dash-sub-pill" data-subtab="dash-report" type="button">📑 Báo cáo Phân tích</button>
+            <button class="dash-sub-pill" data-subtab="dash-leads" type="button">📋 Bảng Dữ liệu Chi tiết</button>
+            <button class="dash-sub-pill" data-subtab="dash-hitl" type="button">⚡ Phê Duyệt &amp; Giao Việc</button>
+            <button class="dash-sub-pill" data-subtab="dash-audit" type="button">🔍 Log Xử lý File</button>
+            <button class="dash-sub-pill" data-subtab="dash-test" type="button">🧪 Tự Kiểm Thử</button>
+            <button class="dash-sub-pill" data-subtab="dash-config" type="button">⚙️ Cấu Hình AI</button>
+          </div>
+
+          <!-- Right Exports -->
+          <div class="dash-exports-group">
+            <button id="btnPrintReportPdf" class="btn-export-pill" type="button" title="In trực tiếp hoặc Lưu file dưới dạng PDF">🖨 In Báo Cáo / PDF</button>
+            <button id="btnExportWordReport" class="btn-export-pill btn-export-highlight" type="button" title="Tải file Báo cáo định dạng Word (.doc / .docx)">📄 Tải Báo Cáo Word</button>
+            <button id="btnExportXlsxFull" class="btn-export-pill" type="button">📊 Xuất Excel .xlsx</button>
+            <button id="btnExportLeadsCsv" class="btn-export-pill" type="button">Xuất CSV</button>
+          </div>
+        </div>
+
+        <!-- SUBTAB VIEW 1: TỔNG QUAN (4 BIỂU ĐỒ CHUYÊN NGHIỆP TRÊN + 1 BIỂU ĐỒ XẾP CHỒNG DƯỚI) -->
+        <div id="subtab-dash-overview" class="dash-subpanel active">
+          
+          <!-- DẢI 4 THẺ METRICS NHANH TRÊN CÙNG (100% TỪ TỆP TIN TẢI LÊN) -->
+          <div class="kpi-executive-grid mt-14">
+            <div class="kpi-exec-card">
+              <div class="kpi-exec-head">
+                <span class="kpi-exec-label">TỔNG BẢN GHI DỮ LIỆU</span>
+                <span class="kpi-exec-icon icon-pink">📁</span>
+              </div>
+              <div class="kpi-exec-value" id="kpiTotalLeads">--</div>
+              <div class="kpi-exec-footer">
+                <span class="kpi-tag-success" id="kpiCleanTag">Đã nạp file</span>
+                <small class="kpi-sub-text">100% dữ liệu file</small>
+              </div>
+            </div>
+
+            <div class="kpi-exec-card">
+              <div class="kpi-exec-head">
+                <span class="kpi-exec-label">TỔNG DOANH SỐ / GIÁ TRỊ</span>
+                <span class="kpi-exec-icon icon-purple">💰</span>
+              </div>
+              <div class="kpi-exec-value" id="kpiTotalBudget">-- đ</div>
+              <div class="kpi-exec-footer">
+                <span class="kpi-tag-purple" id="kpiIcpCount">Tổng cộng từ file</span>
+              </div>
+            </div>
+
+            <div class="kpi-exec-card">
+              <div class="kpi-exec-head">
+                <span class="kpi-exec-label">GIÁ TRỊ TRUNG BÌNH / DÒNG</span>
+                <span class="kpi-exec-icon icon-rose">📈</span>
+              </div>
+              <div class="kpi-exec-value" id="kpiIcpRate">-- đ</div>
+              <div class="kpi-exec-footer">
+                <span class="kpi-tag-rose">Trung bình mỗi bản ghi</span>
+              </div>
+            </div>
+
+            <div class="kpi-exec-card">
+              <div class="kpi-exec-head">
+                <span class="kpi-exec-label">MẶT HÀNG / SẢN PHẨM NỔI BẬT</span>
+                <span class="kpi-exec-icon icon-amber">⭐</span>
+              </div>
+              <div class="kpi-exec-value" id="kpiDispatchedSales" style="font-size:18px;line-height:1.35;word-break:break-word;">--</div>
+              <div class="kpi-exec-footer">
+                <span class="kpi-tag-amber" id="kpiPendingHitl1">Chiếm doanh số cao</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Charts Grid (Làm lại chuyên nghiệp, chi tiết, dễ nhìn) -->
+          <div class="four-charts-grid mt-16">
+            <!-- Chart 1: Donut Priority -->
+            <div class="chart-box-card">
+              <div class="chart-box-header">
+                <h4><span class="orange-star">✦</span> Biểu đồ Tròn • Phân bổ theo Kênh</h4>
+                <span class="chart-type-pill">Tròn</span>
+              </div>
+              <div class="chart-box-body" id="chartDonutPriority"></div>
+            </div>
+
+            <!-- Chart 2: Column Region -->
+            <div class="chart-box-card">
+              <div class="chart-box-header">
+                <h4><span class="orange-star">✦</span> Biểu đồ Cột • Phân bổ Khu vực / Kênh</h4>
+                <span class="chart-type-pill">Cột đứng</span>
+              </div>
+              <div class="chart-box-body" id="chartColumnRegion"></div>
+            </div>
+
+            <!-- Chart 3: Bar Products -->
+            <div class="chart-box-card">
+              <div class="chart-box-header">
+                <h4><span class="orange-star">✦</span> Biểu đồ Thanh • Xếp hạng Mặt hàng</h4>
+                <span class="chart-type-pill">Thanh ngang</span>
+              </div>
+              <div class="chart-box-body" id="chartBarProducts"></div>
+            </div>
+
+            <!-- Chart 4: Bar Status -->
+            <div class="chart-box-card">
+              <div class="chart-box-header">
+                <h4><span class="orange-star">✦</span> Biểu đồ Thanh • Trạng thái Dữ liệu</h4>
+                <span class="chart-type-pill">Thanh ngang</span>
+              </div>
+              <div class="chart-box-body" id="chartBarStatus"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB VIEW: BÁO CÁO PHÂN TÍCH CHUYÊN SÂU (EXECUTIVE ANALYTICS REPORT) -->
+        <div id="subtab-dash-report" class="dash-subpanel">
+          <div id="executiveReportContainer" class="executive-report-wrapper mt-16">
+            <!-- Báo cáo phân tích chuyên sâu do renderExecutiveReportView() sinh ra -->
+          </div>
+        </div>
+
+        <!-- SUBTAB VIEW 2: KHÁCH HÀNG (BẢNG DANH SÁCH LEADS ĐẦY ĐỦ) -->
+        <div id="subtab-dash-leads" class="dash-subpanel">
+          <div class="table-control-bar mt-14" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <div class="table-search-box" style="flex:1;">
+              <input id="searchInput" type="search" placeholder="🔍 Tìm kiếm nhanh bất kỳ nội dung, giá trị hoặc từ khóa nào trong file..." />
+              <span class="search-ico">🔍</span>
+            </div>
+            <div class="filter-dropdowns">
+              <span id="dashTableRowCountBadge" style="font-size:12px;font-weight:750;color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;padding:6px 14px;border-radius:8px;white-space:nowrap;">
+                0 bản ghi
+              </span>
+            </div>
+          </div>
+
+          <div class="table-scroll-container mt-12">
+            <table id="clusterTable" class="clean-interactive-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUBTAB VIEW 3: DUYỆT & CÔNG VIỆC (HITL 1 TRƯỞNG PHÒNG & HITL 2 SALES) -->
+        <div id="subtab-dash-hitl" class="dash-subpanel">
+          <div class="hitl-queue-grid mt-14" id="hitlQueueContainer"></div>
+        </div>
+
+        <!-- SUBTAB VIEW 4: LOG TRUY VẾT (AUDIT LOG TOÀN BỘ) -->
+        <div id="subtab-dash-audit" class="dash-subpanel">
+          <div class="table-scroll-container mt-14">
+            <table id="auditFullTable" class="clean-interactive-table">
+              <thead>
+                <tr>
+                  <th>Mã</th>
+                  <th>Doanh nghiệp</th>
+                  <th>Bước Workflow</th>
+                  <th>Chi tiết truy vết</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SUBTAB VIEW 5: TỰ KIỂM THỬ -->
+        <div id="subtab-dash-test" class="dash-subpanel">
+          <div class="test-suite-panel mt-14" id="testSuitePanel"></div>
+        </div>
+
+        <!-- SUBTAB VIEW 6: CẤU HÌNH -->
+        <div id="subtab-dash-config" class="dash-subpanel">
+          <div class="config-panel-card mt-14">
+            <h3>Cấu hình Động cơ AI (Hybrid / Live LLM)</h3>
+            <p class="config-sub">Mặc định chạy Hybrid AI + Rule Engine offline cực nhanh. Nhập API Key nếu muốn Live LLM viết thêm góc tiếp cận bán hàng.</p>
+            <div class="config-form mt-12">
+              <div class="form-row">
+                <label>Nhà cung cấp:</label>
+                <select id="cfgProvider">
+                  <option value="offline">Hybrid Offline Engine (Nhanh, không cần key)</option>
+                  <option value="gemini">Google Gemini API</option>
+                  <option value="openai">OpenAI API</option>
+                </select>
+              </div>
+              <div class="form-row mt-10">
+                <label>Model:</label>
+                <input id="cfgModel" type="text" value="gemini-2.5-flash" />
+              </div>
+              <div class="form-row mt-10">
+                <label>API Key:</label>
+                <input id="cfgApiKey" type="password" placeholder="AIza... hoặc sk-..." />
+              </div>
+              <button id="btnSaveConfigTab" class="btn-orange-pill mt-14" type="button">Lưu Cấu Hình</button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /#dashContentWrapper -->
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- TRANG 5: 5. FEEDBACK (TRUNG TÂM PHẢN HỒI & ĐÁNH GIÁ CHẤT LƯỢNG) -->
+    <!-- ============================================================== -->
+    <section id="tab-feedback" class="app-page-view">
+      <div class="page-content-container">
+        <!-- Top Title Bar -->
+        <div class="dash-top-hero-card">
+          <div class="dash-title-meta">
+            <div class="eyebrow-chip">
+              <span class="eyebrow-asterisk">✦</span>
+              <span>TRANG 5 • PHẢN HỒI &amp; ĐÁNH GIÁ CHẤT LƯỢNG (FEEDBACK HUB)</span>
+            </div>
+            <h1 class="dash-hero-title">Trung Tâm Phản Hồi &amp; Đánh Giá AI Agent</h1>
+            <p style="margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.5;">
+              Khảo sát mức độ hài lòng, tiếp nhận đóng góp cải tiến thuật toán và theo dõi đánh giá chất lượng từ hơn 250+ doanh nghiệp.
+            </p>
+          </div>
+          <div class="dash-hero-buttons">
+            <button class="btn-outline-pill" data-go-tab="tab-dashboard" type="button">← Về Báo cáo &amp; Dashboard</button>
+            <button class="btn-orange-pill" data-go-tab="tab-intake" type="button">📂 Vào Xử lý Dữ liệu</button>
+          </div>
+        </div>
+
+        <!-- 4 Metrics Strip for Feedback Hub -->
+        <div class="executive-metrics-strip mt-14">
+          <div class="exec-metric-card">
+            <div class="exec-metric-top">
+              <span class="exec-metric-label">ĐIỂM HÀI LÒNG TRUNG BÌNH (CSAT)</span>
+              <span class="exec-metric-icon">⭐</span>
+            </div>
+            <div class="exec-metric-value">4.92<span class="exec-metric-unit">/5.0</span></div>
+            <div class="exec-metric-trend trend-up">
+              <span>↑ 98.6%</span> đánh giá 5 sao
+            </div>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-card">
+            <div class="exec-metric-top">
+              <span class="exec-metric-label">DOANH NGHIỆP ĐÃ PHẢN HỒI</span>
+              <span class="exec-metric-icon">🏢</span>
+            </div>
+            <div class="exec-metric-value">250+<span class="exec-metric-unit">đối tác</span></div>
+            <div class="exec-metric-trend trend-neutral">
+              <span>Đa ngành nghề:</span> Bán lẻ, Sản xuất, Vận tải
+            </div>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-card">
+            <div class="exec-metric-top">
+              <span class="exec-metric-label">ĐỘ CHÍNH XÁC PHÂN BỔ</span>
+              <span class="exec-metric-icon">🎯</span>
+            </div>
+            <div class="exec-metric-value">98.4%<span class="exec-metric-unit">chuẩn</span></div>
+            <div class="exec-metric-trend trend-up">
+              <span>0% tranh chấp</span> địa bàn &amp; lead
+            </div>
+          </div>
+          <div class="exec-metric-divider"></div>
+          <div class="exec-metric-card">
+            <div class="exec-metric-top">
+              <span class="exec-metric-label">TỐC ĐỘ CẢI THIỆN TỪ AI</span>
+              <span class="exec-metric-icon">⚡</span>
+            </div>
+            <div class="exec-metric-value">&lt; 2h<span class="exec-metric-unit">phản hồi</span></div>
+            <div class="exec-metric-trend trend-up">
+              <span>Cập nhật liên tục</span> vào prompt &amp; rule
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Showcase & Testimonials -->
+        <div class="feedback-showcase-section mt-16" id="sectionCustomerFeedback">
+          <div class="feedback-section-header">
+            <div class="feedback-eyebrow">
+              <span class="badge-sparkle">✦</span>
+              <span>ĐÁNH GIÁ TIÊU BIỂU TỪ KHÁCH HÀNG DOANH NGHIỆP</span>
+            </div>
+            <h2 class="feedback-section-title">Khách Hàng Nói Gì Về Nam Việt AI Agent?</h2>
+            <p class="feedback-section-subtitle">
+              Xem nhận xét thực tế từ các Trưởng phòng Kinh doanh và Giám đốc Điều hành đang vận hành giải pháp:
+            </p>
+          </div>
+
+          <!-- Feedback Highlights Cards Grid -->
+          <div class="feedback-cards-grid mt-16" id="feedbackCardsGrid">
+            <!-- Card 1 -->
+            <div class="feedback-card">
+              <div class="feedback-card-top">
+                <div class="feedback-stars">★★★★★</div>
+                <span class="feedback-tag feedback-tag-verified">✓ Đã xác thực</span>
+              </div>
+              <p class="feedback-quote">
+                "Trước đây mỗi đợt hội thảo về hơn 200 leads, team sales mất 3 ngày đối soát tên công ty và chia thủ công. Với Nam Việt AI Agent, chỉ mất đúng 3 giây là bảng phân bổ theo 3 miền đã xong, không còn ai cãi nhau về việc cướp khách hay trùng số thuế."
+              </p>
+              <div class="feedback-author-row">
+                <div class="feedback-avatar" style="background:#fce7f3;color:#db2777;">AP</div>
+                <div class="feedback-author-info">
+                  <strong>Ông Nguyễn Tuấn Anh</strong>
+                  <span>Giám đốc Điều hành • May Mặc An Phú</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="feedback-card">
+              <div class="feedback-card-top">
+                <div class="feedback-stars">★★★★★</div>
+                <span class="feedback-tag feedback-tag-verified">✓ Đã xác thực</span>
+              </div>
+              <p class="feedback-quote">
+                "Tính năng chẩn đoán lỗi file và tự động nhận diện mọi định dạng CSV/Excel rất đỉnh. Khách hàng gửi file thiếu số điện thoại hay viết tắt tên công ty AI đều phát hiện và đề xuất xử lý ngay lập tức mà không bao giờ bị đứng hệ thống."
+              </p>
+              <div class="feedback-author-row">
+                <div class="feedback-avatar" style="background:#fed7aa;color:#ea580c;">ĐN</div>
+                <div class="feedback-author-info">
+                  <strong>Bà Trần Thị Bích Lan</strong>
+                  <span>Trưởng phòng Kinh doanh • Tập đoàn Đại Nam</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="feedback-card">
+              <div class="feedback-card-top">
+                <div class="feedback-stars">★★★★★</div>
+                <span class="feedback-tag feedback-tag-verified">✓ Đã xác thực</span>
+              </div>
+              <p class="feedback-quote">
+                "Cơ chế 2 tầng duyệt [HITL] giúp tôi vừa tự động hóa phân bổ cho 8 NVKD, vừa kiểm soát tuyệt đối các trường hợp ngoại lệ có ngân sách lớn trên 100 triệu. Dashboard trực quan và xuất file HTML độc lập cực kỳ tiện cho báo cáo ban giám đốc."
+              </p>
+              <div class="feedback-author-row">
+                <div class="feedback-avatar" style="background:#e0e7ff;color:#4f46e5;">SM</div>
+                <div class="feedback-author-info">
+                  <strong>Ông Lê Hoàng Phúc</strong>
+                  <span>Phó Tổng Giám Đốc • Vận Tải Quốc Tế Sao Mai</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form: Gửi Phản Hồi Trực Tiếp -->
+          <div class="feedback-form-box mt-20">
+            <div class="feedback-form-left">
+              <div class="feedback-form-badge">✦ ĐÓNG GÓP Ý KIẾN TRỰC TIẾP</div>
+              <h3 style="margin:8px 0 6px;color:#881337;font-size:18px;">Bạn có phản hồi hoặc đóng góp ý kiến?</h3>
+              <p style="margin:0 0 16px;color:#9f1239;font-size:13px;line-height:1.5;">
+                Ý kiến của bạn giúp chúng tôi liên tục nâng cấp thuật toán AI Agent, tối ưu hóa quy trình điều phối và trải nghiệm làm việc của đội ngũ kinh doanh.
+              </p>
+              <div class="feedback-rating-select">
+                <label style="font-weight:750;font-size:12.5px;color:#881337;display:block;margin-bottom:6px;">Đánh giá trải nghiệm của bạn:</label>
+                <div class="star-rating-picker" id="starRatingPicker">
+                  <button type="button" class="star-btn active" data-stars="1">★</button>
+                  <button type="button" class="star-btn active" data-stars="2">★</button>
+                  <button type="button" class="star-btn active" data-stars="3">★</button>
+                  <button type="button" class="star-btn active" data-stars="4">★</button>
+                  <button type="button" class="star-btn active" data-stars="5">★</button>
+                  <span id="starRatingLabel" style="font-size:12px;font-weight:700;color:#db2777;margin-left:8px;">5/5 Rất xuất sắc</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedback-form-right">
+              <form id="feedbackFormSubmit" onsubmit="return false;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+                  <div>
+                    <label style="font-size:11.5px;font-weight:700;color:#374151;">Họ và tên *</label>
+                    <input id="feedbackUserName" type="text" placeholder="VD: Nguyễn Văn A" required style="width:100%;padding:9px 12px;border:1.5px solid #fecdd3;border-radius:8px;font-size:12.5px;box-sizing:border-box;" />
+                  </div>
+                  <div>
+                    <label style="font-size:11.5px;font-weight:700;color:#374151;">Doanh nghiệp / Đơn vị</label>
+                    <input id="feedbackUserCompany" type="text" placeholder="VD: Công ty TNHH Nam Việt" style="width:100%;padding:9px 12px;border:1.5px solid #fecdd3;border-radius:8px;font-size:12.5px;box-sizing:border-box;" />
+                  </div>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label style="font-size:11.5px;font-weight:700;color:#374151;">Chủ đề phản hồi</label>
+                  <select id="feedbackCategory" style="width:100%;padding:9px 12px;border:1.5px solid #fecdd3;border-radius:8px;font-size:12.5px;box-sizing:border-box;background:#fff;">
+                    <option value="accuracy">Độ chính xác nhận diện &amp; phân bổ lead (ICP &amp; Vùng)</option>
+                    <option value="data_error">Tính năng chẩn đoán &amp; tự sửa lỗi file</option>
+                    <option value="speed">Tốc độ xử lý &amp; Trải nghiệm giao diện</option>
+                    <option value="feature">Đề xuất tính năng mới</option>
+                    <option value="general">Ý kiến đóng góp chung</option>
+                  </select>
+                </div>
+                <div style="margin-bottom:14px;">
+                  <label style="font-size:11.5px;font-weight:700;color:#374151;">Nội dung phản hồi chi tiết *</label>
+                  <textarea id="feedbackUserComment" rows="3" placeholder="Chia sẻ cảm nhận, góp ý hoặc trải nghiệm của bạn khi sử dụng hệ thống..." required style="width:100%;padding:9px 12px;border:1.5px solid #fecdd3;border-radius:8px;font-size:12.5px;box-sizing:border-box;resize:vertical;"></textarea>
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:10px;align-items:center;">
+                  <button id="btnSubmitFeedback" class="btn-orange-pill" type="submit" style="padding:10px 24px;font-size:13px;">
+                    Gửi Phản Hồi Ngay 💬
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== INSPECTOR DRAWER (HỒ SƠ CHI TIẾT & HITL) ==================== -->
+  <div id="inspectorModal" class="inspector-drawer-overlay hidden">
+    <div id="inspectorBackdrop" class="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <span class="eyebrow-chip" id="drawerClusterMeta">HỒ SƠ CHI TIẾT</span>
+          <h2 id="drawerTitle">Chi tiết Doanh nghiệp</h2>
+        </div>
+        <button id="btnCloseInspector" class="btn-close-drawer" type="button" title="Đóng ngăn kéo">&times;</button>
+      </div>
+      <div id="inspectorPane" class="drawer-body"></div>
+    </div>
+  </div>
+
+  <!-- ==================== LLM CONFIG MODAL ==================== -->
+  <div id="llmModal" class="modal-overlay hidden">
+    <div id="llmBackdrop" class="modal-backdrop"></div>
+    <div class="modal-box-card">
+      <div class="modal-head-row">
+        <div>
+          <h3>Cấu hình Động cơ AI (Hybrid / Live LLM)</h3>
+          <p class="modal-sub">Mặc định chạy Hybrid AI + Rule Engine offline cực nhanh.</p>
+        </div>
+        <button id="btnCloseLlmModal" class="btn-close-drawer" type="button">&times;</button>
+      </div>
+      <div class="form-vertical-stack mt-14">
+        <div>
+          <label class="input-label" for="llmProvider">Nhà cung cấp:</label>
+          <select id="llmProvider">
+            <option value="offline">Hybrid Offline Engine (Nhanh, không cần key)</option>
+            <option value="gemini">Google Gemini API</option>
+            <option value="openai">OpenAI API</option>
+          </select>
+        </div>
+        <div class="mt-10">
+          <label class="input-label" for="llmModel">Model:</label>
+          <input id="llmModel" type="text" value="gemini-2.5-flash" />
+        </div>
+        <div class="mt-10">
+          <label class="input-label" for="llmApiKey">API Key:</label>
+          <input id="llmApiKey" type="password" placeholder="AIza... hoặc sk-..." />
+        </div>
+      </div>
+      <div class="modal-foot-row mt-16">
+        <button id="btnSaveLlmConfig" class="btn-orange-pill" type="button">Lưu cấu hình</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Feedback Button -->
+  <button id="btnFloatingFeedback" class="floating-feedback-btn" type="button" title="Gửi phản hồi cho AI Agent">
+    <span class="floating-feedback-icon">💬</span>
+    <span class="floating-feedback-text">Phản hồi &amp; Góp ý</span>
+  </button>
+
+  <!-- SCRIPTS BUNDLE -->
+  <script src="data/namviet_data_bundle.js?v=20261119_02"></script>
+  <script src="src/spreadsheet_io.js?v=20261119_02"></script>
+  <script src="src/agent_engine.js?v=20261119_02"></script>
+  <script src="app.js?v=20261119_02"></script>
+</body>
+</html>

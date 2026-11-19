@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Báo cáo Phân tích Dữ liệu (Web) — Công ty Phần mềm Nam Việt</title>
+  <style>
+    :root {
+      --pink-50: #fdf2f8;
+      --pink-100: #fce7f3;
+      --pink-200: #fbcfe8;
+      --pink-400: #f472b6;
+      --pink-500: #ec4899;
+      --pink-600: #db2777;
+      --pink-700: #be185d;
+      --plum-900: #1e1633;
+      --plum-600: #7e22ce;
+      --plum-500: #a855f7;
+      --mint-100: #d1fae5;
+      --mint-700: #047857;
+      --amber-100: #fef3c7;
+      --amber-700: #b45309;
+      --rose-100: #ffe4e6;
+      --rose-700: #be123c;
+      --ink: #1e1b2e;
+      --muted: #6f6784;
+      --line: #f1e8f0;
+      --surface: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      color: var(--ink);
+      font-size: 13.5px;
+      line-height: 1.55;
+      background: linear-gradient(135deg, #f8e8f6 0%, #f4dff1 48%, #fbeaf4 100%);
+      padding: 20px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      background: #fcf9fb;
+      border-radius: 24px;
+      box-shadow: 0 24px 64px rgba(157, 23, 77, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      overflow: hidden;
+    }
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .mark i:first-child {
+      width: 10px;
+      height: 20px;
+      border-radius: 10px 0 0 10px;
+      background: linear-gradient(180deg, var(--pink-500), var(--pink-600));
+      display: block;
+    }
+    .mark i:last-child {
+      width: 10px;
+      height: 20px;
+      border-radius: 0 10px 10px 0;
+      background: linear-gradient(180deg, #f9a8d4, var(--plum-500));
+      display: block;
+    }
+    .brand strong { font-size: 18px; letter-spacing: -0.4px; }
+    .tag-pill {
+      background: var(--pink-100);
+      color: var(--pink-700);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--pink-200);
+      background: #fff;
+      color: var(--pink-700);
+    }
+    .btn:hover { background: var(--pink-50); }
+    .btn.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--pink-500), var(--pink-600));
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(236, 72, 153, 0.28);
+    }
+    .main {
+      padding: 24px 26px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .hero {
+      background: linear-gradient(135deg, #fff 0%, #fdf2f8 65%, #f5f3ff 100%);
+      border: 1px solid var(--pink-200);
+      border-radius: 18px;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 6px; }
+    .hero p { color: var(--muted); max-width: 760px; font-size: 13px; }
+    .meta-strip {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .meta-chip {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid rgba(251, 207, 232, 0.65);
+      border-radius: 16px;
+      padding: 15px 16px;
+      box-shadow: 0 6px 20px rgba(190, 24, 93, 0.045);
+    }
+    .kpi-label { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+    .kpi-val { font-size: 23px; font-weight: 800; letter-spacing: -0.4px; margin: 4px 0; color: var(--ink); }
+    .kpi-sub { font-size: 11.5px; font-weight: 700; }
+    .kpi-sub.good { color: var(--mint-700); }
+    .kpi-sub.pink { color: var(--pink-700); }
+    .kpi-sub.danger { color: var(--rose-700); }
+    .kpi-sub.plum { color: var(--plum-600); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 16px;
+    }
+    .grid-even {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .panel {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(251, 207, 232, 0.55);
+      box-shadow: 0 6px 22px rgba(190, 24, 93, 0.04);
+    }
+    .sec-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+    .sec-badge.badge-pink { background: var(--pink-100); color: var(--pink-700); border: 1px solid var(--pink-200); }
+    .sec-badge.badge-plum { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .sec-badge.badge-mint { background: var(--mint-100); color: var(--mint-700); border: 1px solid #a7f3d0; }
+    .sec-badge.badge-danger { background: var(--rose-100); color: var(--rose-700); border: 1px solid #fecdd3; }
+    .sec-badge.badge-blue { background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .panel-head h2 {
+      font-size: 16.5px;
+      font-weight: 850;
+      color: var(--plum-900);
+      letter-spacing: -0.3px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 14px;
+    }
+    .panel-head h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--pink-500), var(--plum-600));
+      border-radius: 4px;
+    }
+    .sub { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+    .callout {
+      border-left: 4px solid var(--pink-500);
+      background: #fff9fc;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 12.5px;
+      margin-top: 10px;
+    }
+    .callout.danger { border-left-color: var(--rose-700); background: #fff5f7; }
+    .callout.mint { border-left-color: var(--mint-700); background: #f0fdf9; }
+    .alert-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .alert-box {
+      border: 1px solid var(--pink-200);
+      border-left: 4px solid var(--rose-700);
+      background: #fff7fa;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .alert-box.plum { border-left-color: var(--plum-600); background: #faf5ff; }
+    .alert-box h3 { font-size: 13.5px; font-weight: 800; margin-bottom: 4px; }
+    .alert-box p { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 7px;
+      font-size: 10.5px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .p-ok { background: var(--mint-100); color: var(--mint-700); }
+    .p-pink { background: var(--pink-100); color: var(--pink-700); }
+    .p-plum { background: #f3e8ff; color: var(--plum-600); }
+    .p-danger { background: var(--rose-100); color: var(--rose-700); }
+    .p-muted { background: #f1edf5; color: #64748b; }
+
+    .tab-bar {
+      display: inline-flex;
+      background: var(--pink-50);
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 11px;
+      border-radius: 7px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #fff;
+      color: var(--pink-700);
+      box-shadow: 0 1px 4px rgba(236, 72, 153, 0.16);
+    }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.2px; }
+    th {
+      text-align: left;
+      padding: 9px 10px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1.5px solid var(--line);
+      white-space: nowrap;
+    }
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #f7eef5;
+      vertical-align: middle;
+    }
+    tr:hover td { background: #fff9fc; }
+    tr.hidden-row { display: none; }
+    .bar-track {
+      height: 8px;
+      background: #f1e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink-400), var(--pink-600));
+    }
+    .bar-fill.plum { background: linear-gradient(90deg, var(--plum-500), var(--plum-600)); }
+    .bar-fill.mint { background: linear-gradient(90deg, #34d399, #059669); }
+    .footer-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--muted);
+      padding-top: 8px;
+    }
+
+    @media (max-width: 980px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .grid-even, .alert-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      body { padding: 8px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .main { padding: 14px; }
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .container { box-shadow: none; border: none; border-radius: 0; }
+      .topbar .top-actions, .tab-bar { display: none !important; }
+      .topbar { position: static; }
+      tr.hidden-row { display: table-row !important; }
+      .panel, .kpi-card, .hero { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"><i></i><i></i></span>
+        <strong>namviet.</strong>
+        <span class="tag-pill">Báo cáo Phân tích Dữ liệu Web</span>
+      </div>
+      <div style="display:inline-flex;align-items:center;background:var(--pink-50);border:1px solid var(--pink-200);border-radius:12px;padding:3px;gap:3px;">
+        <a href="index.html" style="text-decoration:none;padding:6px 12px;border-radius:9px;font-size:12px;font-weight:700;color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:all 0.14s ease;">📊 Dashboard</a>
+        <span style="background:#fff;color:var(--pink-700);padding:6px 12px;border-radius:9px;font-size:12px;font-weight:700;box-shadow:0 2px 8px rgba(236,72,153,0.18);display:inline-flex;align-items:center;gap:6px;">📑 Báo cáo Web</span>
+      </div>
+      <div class="top-actions">
+        <a class="btn" href="index.html">← Mở Dashboard</a>
+        <button class="btn primary" type="button" onclick="window.print()">🖨 In / Lưu PDF</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <h1>Kiểm toán Phễu Sàng lọc &amp; Điều phối Leads — Công ty Nam Việt</h1>
+          <p>
+            Tổng hợp kết quả chuẩn hóa, khử trùng đa kênh, chấm điểm chống bẫy ngân sách sai sản phẩm và cân bằng tải 8 NVKD
+            nhằm giải quyết bài toán tiếp nhận ~700 leads/tuần cho phân khúc B2B SME.
+          </p>
+          <div class="meta-strip">
+            <span class="meta-chip">📅 Ngày tham chiếu: 2026-11-11</span>
+            <span class="meta-chip">⏱ Ngưỡng SLA bỏ quên: 7 ngày</span>
+            <span class="meta-chip">📦 Bộ quy tắc: NV-RULES-2026.11</span>
+            <span class="meta-chip">👔 Trưởng phòng: Hoàng Đức Thắng</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 EXECUTIVE KPIS -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Khử trùng lặp đa kênh</div>
+          <div class="kpi-val">18 → 15 DN</div>
+          <div class="kpi-sub good">-16.7% bản ghi trùng • 6 cụm khớp alias/CRM</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Pipeline SME Thực chất (Hạng A/B)</div>
+          <div class="kpi-val">810 triệu đ</div>
+          <div class="kpi-sub pink">12/15 DN đạt chuẩn (80.0%) • 10 A, 2 B</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Ngân sách Bẫy bị chặn (Hạng D)</div>
+          <div class="kpi-val">2.755 tỷ đ</div>
+          <div class="kpi-sub danger">76.1% ngân sách thô • 2 bẫy lớn + 1 micro</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Cảnh báo Trưởng phòng &amp; SLA</div>
+          <div class="kpi-val">3 ca khẩn</div>
+          <div class="kpi-sub plum">2 ca bỏ quên (15d &amp; 22d) • 1 tranh chấp</div>
+        </div>
+      </section>
+
+      <!-- RECONCILIATION + CHANNEL PURITY -->
+      <section class="grid-2">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="sec-badge badge-pink">PHẦN 01 • TÀI CHÍNH &amp; ĐỐI SOÁT</span>
+              <h2>1. Phá vỡ "Ảo giác Pipeline": 3,620 tr Thô vs. 810 tr Thực chất</h2>
+              <p class="sub">Đối soát 100% giá trị ngân sách trên 18 bản ghi đăng ký thô</p>
+            </div>
+            <span class="pill p-pink">Thực chất chỉ chiếm 22.4%</span>
+          </div>
+
+          <!-- Inline SVG Budget Reconciliation -->
+          <svg viewBox="0 0 660 195" width="100%" style="display:block;">
+            <defs>
+              <linearGradient id="gIcp" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+              <linearGradient id="gTrap" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#be123c"/></linearGradient>
+              <linearGradient id="gDup" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#7e22ce"/></linearGradient>
+            </defs>
+
+            <!-- Stacked Bar 3,620M -->
+            <text x="8" y="20" font-size="11.5" font-weight="700" fill="#1e1b2e">Tổng ngân sách thô ghi nhận: 3,620 triệu đ (100%)</text>
+            <rect x="8" y="30" width="640" height="28" rx="8" fill="#f1e8f0" />
+            <!-- 810 / 3620 * 640 = 143.2 -->
+            <rect x="8" y="30" width="143.2" height="28" rx="8" fill="url(#gIcp)" />
+            <!-- 55 / 3620 * 640 = 9.7 -->
+            <rect x="151.2" y="30" width="12" height="28" fill="url(#gDup)" />
+            <!-- 2755 / 3620 * 640 = 487.1 -->
+            <rect x="163.2" y="30" width="484.8" height="28" rx="8" fill="url(#gTrap)" />
+            <text x="79" y="48" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">810 tr (22.4%)</text>
+            <text x="405" y="48" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="800">Loại ngoài phạm vi SME: 2,755 tr (76.1%)</text>
+
+            <!-- Breakdown Bars -->
+            <text x="8" y="88" font-size="11.5" font-weight="700" fill="#047857">✓ Pipeline ICP đạt chuẩn (9 DN khai báo + 3 DN chưa rõ NS)</text>
+            <rect x="8" y="95" width="143" height="14" rx="7" fill="url(#gIcp)" />
+            <text x="160" y="106" font-size="11" font-weight="700" fill="#1e1b2e">810 tr — 100% tập trung vào gói NV-SUITE</text>
+
+            <text x="8" y="130" font-size="11.5" font-weight="700" fill="#be123c">✕ Bẫy #1 Đông Phương (HIS/PACS/HL7 bệnh viện 600 giường)</text>
+            <rect x="8" y="137" width="318" height="14" rx="7" fill="url(#gTrap)" />
+            <text x="334" y="148" font-size="11" font-weight="700" fill="#1e1b2e">1,800 tr (49.7% tổng thô) — Điểm: 14/100</text>
+
+            <text x="8" y="172" font-size="11.5" font-weight="700" fill="#be123c">✕ Bẫy #2 Trường Sơn (MES/PLC/SCADA/SAP) + Sunny (5 tr)</text>
+            <rect x="8" y="179" width="169" height="14" rx="7" fill="url(#gTrap)" />
+            <text x="185" y="190" font-size="11" font-weight="700" fill="#1e1b2e">955 tr (26.4%) + 55 tr trùng nội cụm An Khang</text>
+          </svg>
+
+          <div class="callout danger">
+            <strong>Insight tài chính:</strong> Nếu đội 8 NVKD sắp lịch gọi theo ngân sách thô, Top 2 cuộc gọi lớn nhất đều là
+            <strong>Hạng D không thể chốt</strong> (2.75 tỷ đ). Chặn ngay từ cổng vào giúp tiết kiệm ~25–30% thời gian tư vấn sai.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="sec-badge badge-mint">PHẦN 02 • KÊNH TIẾP CẬN</span>
+              <h2>2. Chất lượng Kênh &amp; Nhu cầu Sản phẩm</h2>
+              <p class="sub">Đo trên 18 lượt chạm cụm &amp; 12 doanh nghiệp đạt chuẩn</p>
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <strong>Hội thảo (6/6 đạt chuẩn • 0 sai SP)</strong>
+              <span class="pill p-ok">100.0% Tinh khiết</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill mint" style="width:100%"></div></div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <strong>Campaign (4/5 đạt chuẩn • 1 sai SP Trường Sơn)</strong>
+              <span class="pill p-pink">80.0% Tinh khiết</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;">
+              <strong>Website (5/7 đạt chuẩn • 2 sai SP: Đông Phương, Sunny)</strong>
+              <span class="pill p-plum">71.4% Tinh khiết</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill plum" style="width:71.4%"></div></div>
+          </div>
+
+          <div style="border-top:1px solid var(--line);padding-top:12px;">
+            <strong style="font-size:12.5px;">Xu hướng Sản phẩm &amp; Giá trị Hợp nhất (12 DN ICP):</strong>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;">
+              <div style="background:#fdf2f8;border:1px solid #fbcfe8;border-radius:10px;padding:9px;text-align:center;">
+                <div style="font-size:11px;color:var(--muted);font-weight:700;">NV-SUITE</div>
+                <div style="font-size:18px;font-weight:800;color:var(--pink-700);">9 DN (75%)</div>
+                <div style="font-size:11px;font-weight:700;">810 triệu đ</div>
+              </div>
+              <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px;padding:9px;text-align:center;">
+                <div style="font-size:11px;color:var(--muted);font-weight:700;">NV-INV</div>
+                <div style="font-size:18px;font-weight:800;color:var(--plum-600);">2 DN (16.7%)</div>
+                <div style="font-size:11px;color:var(--muted);">Chưa rõ NS</div>
+              </div>
+              <div style="background:#f0fdf9;border:1px solid #a7f3d0;border-radius:10px;padding:9px;text-align:center;">
+                <div style="font-size:11px;color:var(--muted);font-weight:700;">NV-ACC</div>
+                <div style="font-size:18px;font-weight:800;color:var(--mint-700);">1 DN (8.3%)</div>
+                <div style="font-size:11px;color:var(--muted);">Thành Công</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DATA QUALITY & WORKLOAD 700/WEEK -->
+      <section class="grid-even">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="sec-badge badge-danger">PHẦN 03 • LỖ HỔNG DỮ LIỆU</span>
+              <h2>3. Phân tích Thiếu Dữ liệu &amp; "Cứu" Hồ sơ Tiềm năng</h2>
+              <p class="sub">Tỷ lệ thiếu trên 18 hồ sơ gốc &amp; cách nhánh Draft xử lý</p>
+            </div>
+          </div>
+
+          <svg viewBox="0 0 540 170" width="100%" style="display:block;">
+            <g font-size="11.5" font-weight="600" fill="#1e1b2e">
+              <text x="4" y="22">Mã số thuế (tax_id)</text>
+              <rect x="175" y="10" width="260" height="14" rx="7" fill="#f1e8f0"/>
+              <rect x="175" y="10" width="115.5" height="14" rx="7" fill="#ec4899"/>
+              <text x="445" y="21">8 / 18 (44.4%)</text>
+
+              <text x="4" y="54">Ngân sách (budget_vnd)</text>
+              <rect x="175" y="42" width="260" height="14" rx="7" fill="#f1e8f0"/>
+              <rect x="175" y="42" width="72.3" height="14" rx="7" fill="#a855f7"/>
+              <text x="445" y="53">5 / 18 (27.8%)</text>
+
+              <text x="4" y="86">Quy mô (company_size)</text>
+              <rect x="175" y="74" width="260" height="14" rx="7" fill="#f1e8f0"/>
+              <rect x="175" y="74" width="43.4" height="14" rx="7" fill="#f472b6"/>
+              <text x="445" y="85">3 / 18 (16.7%)</text>
+
+              <text x="4" y="118">Thời hạn (timeline)</text>
+              <rect x="175" y="106" width="260" height="14" rx="7" fill="#f1e8f0"/>
+              <rect x="175" y="106" width="28.9" height="14" rx="7" fill="#c084fc"/>
+              <text x="445" y="117">2 / 18 (11.1%)</text>
+
+              <text x="4" y="150">Chức vụ / KV / Ngành</text>
+              <rect x="175" y="138" width="260" height="14" rx="7" fill="#f1e8f0"/>
+              <rect x="175" y="138" width="14.6" height="14" rx="7" fill="#94a3b8"/>
+              <text x="445" y="149">Mỗi trường 1 / 18 (5.6%)</text>
+            </g>
+          </svg>
+
+          <div class="callout mint">
+            <strong>Không bỏ rơi khách thiếu thông tin:</strong> Hồ sơ <em>Thời trang Mây Trắng</em> (đầy đủ 63%, 60đ Hạng B — Trung bình Warm) được sinh sẵn Draft 3 câu hỏi Email/Zalo cho <code>NVKD-02 Trần Ngọc Mai</code> kiểm duyệt <code>[HITL 2]</code>; <em>Xây dựng Thành Công</em> (88% đầy đủ, 83đ Hạng A, chỉ thiếu ngân sách) kèm câu hỏi chốt ngân sách ngay lần gọi đầu.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <span class="sec-badge badge-plum">PHẦN 04 • ĐỘI NGŨ 8 SALES</span>
+              <h2>4. Cân bằng Tải 8 NVKD &amp; Dự báo 700 Leads/Tuần</h2>
+              <p class="sub">Tổng công suất: 730/tuần • Đang gánh: 460 + 12 = 472 (64.7%)</p>
+            </div>
+          </div>
+
+          <!-- 8 Reps Horizontal Load Bars -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:11.5px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-04 Thảo Vy (Nam)</strong><span>74/95 (77.9%)</span></div>
+              <div class="bar-track"><div class="bar-fill plum" style="width:77.9%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-06 Thu Hiền (Nam)</strong><span>66/90 (73.3%)</span></div>
+              <div class="bar-track"><div class="bar-fill plum" style="width:73.3%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-02 Ngọc Mai (Bắc)</strong><span>65/95 (68.4%)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:68.4%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-05 Hoàng Nam (Nam)</strong><span>60/95 (63.2%)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:63.2%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-01 Minh Quân (Bắc)</strong><span>60/95 (63.2%)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:63.2%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-03 Quang Khải (Bắc)</strong><span>53/90 (58.9%)</span></div>
+              <div class="bar-track"><div class="bar-fill mint" style="width:58.9%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-08 Kim Ngân (Tây)</strong><span>49/85 (57.6%)</span></div>
+              <div class="bar-track"><div class="bar-fill mint" style="width:57.6%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;"><strong>NVKD-07 Quốc Bảo (Trung)</strong><span>45/85 (52.9%)</span></div>
+              <div class="bar-track"><div class="bar-fill mint" style="width:52.9%"></div></div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>Ngoại suy 700 leads/tuần:</strong> AI Agent khử ~16.7% trùng (~117 dòng) và chặn ~20% sai SP (~116 DN) → giảm áp lực từ 700 xuống còn <strong>~467 DN/tuần</strong> (-33.3%). Tuy nhiên, vì 8 NVKD chỉ còn <strong>270 slots trống</strong> (460 CRM cũ), cần đóng/chuyển nuôi dưỡng ~200 CRM backlog mỗi tuần để không vỡ SLA.
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 URGENT MANAGER CASES -->
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="sec-badge badge-danger">PHẦN 05 • CA KHẨN CẤP [HITL 1]</span>
+            <h2>5. Ba Ca Khẩn Cấp Cần Trưởng Phòng Hoàng Đức Thắng Xử Lý Trong Ngày</h2>
+            <p class="sub">Các hồ sơ kích hoạt cảnh báo vượt SLA (&gt;7 ngày) hoặc tranh chấp địa bàn</p>
+          </div>
+        </div>
+        <div class="alert-row">
+          <div class="alert-box">
+            <h3>CL-005 • Logistics Đông Á (DAL) <span class="pill p-danger">Trễ 15 ngày</span></h3>
+            <p>Hạng A (100đ) • <strong>95 triệu đ</strong> • NVKD-01 Nguyễn Minh Quân • Hạn chốt gấp 2 tuần.</p>
+            <div style="font-size:12px;"><strong>Hành động:</strong> Giao gọi lại trong 2h hoặc điều chuyển ngay để không lỡ deal NV-SUITE.</div>
+          </div>
+          <div class="alert-box">
+            <h3>CL-008 • Việt Food <span class="pill p-danger">Trễ 22 ngày</span></h3>
+            <p>Hạng B (63đ) • <strong>NV-INV</strong> • NVKD-04 Phạm Thảo Vy (đang tải cao nhất 77.9%).</p>
+            <div style="font-size:12px;"><strong>Hành động:</strong> Khớp SĐT lật lại lead bị quên sau hội thảo T10; chuyển sang NVKD-05 (63.2% tải) để cân tải Miền Nam.</div>
+          </div>
+          <div class="alert-box plum">
+            <h3>CL-006 • Minh Tâm Tech <span class="pill p-plum">Tranh chấp HN–HCM</span></h3>
+            <p>Hạng A (100đ) • <strong>85 triệu đ</strong> • NVKD-03 (HN) vs NVKD-06 (HCM).</p>
+            <div style="font-size:12px;"><strong>Hành động:</strong> Chốt 1 đầu mối chính (NVKD-06 Đặng Thu Hiền tại HQ HCM), ghi nhận phối hợp liên chi nhánh.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FULL 15 COMPANY TABLE WITH INTERACTIVE FILTER -->
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="sec-badge badge-pink">PHẦN 06 • DANH SÁCH DOANH NGHIỆP</span>
+            <h2>6. Bảng Phân Loại &amp; Điều Phối Toàn Bộ 15 Doanh Nghiệp</h2>
+            <p class="sub" id="tblCaption">Đang hiển thị toàn bộ 15 doanh nghiệp sau chuẩn hóa và hợp nhất trùng lặp</p>
+          </div>
+          <div class="tab-bar" id="reportFilterTabs">
+            <button class="tab-btn active" data-filter="ALL" type="button">Tất cả (15)</button>
+            <button class="tab-btn" data-filter="ASSIGNED_TO_REP" type="button">Giao ngay (8)</button>
+            <button class="tab-btn" data-filter="PENDING_MANAGER_APPROVAL" type="button">Chờ duyệt (3)</button>
+            <button class="tab-btn" data-filter="DRAFT_FOR_ENRICHMENT" type="button">Cần Draft (1)</button>
+            <button class="tab-btn" data-filter="DISQUALIFIED_OUT_OF_SCOPE" type="button">Loại / Bẫy (3)</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="reportTable">
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Doanh nghiệp &amp; Alias đã gộp</th>
+                <th>Nguồn / Khu vực</th>
+                <th>Sản phẩm</th>
+                <th>Đủ TT</th>
+                <th>Điểm / Hạng</th>
+                <th>Ngân sách</th>
+                <th>NVKD / Xử lý</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-001</strong></td><td><strong>Công ty TNHH Giải pháp TM Thịnh Vượng</strong><br><span class="sub">Gộp 3: Thịnh Vượng, TV Trading</span></td><td>Web, HT, Camp • TP.HCM</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>140 tr</td><td>NVKD-04 Phạm Thảo Vy</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-010</strong></td><td><strong>Công ty TNHH Nông sản Sạch Mekong</strong></td><td>Hội thảo • Cần Thơ</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>135 tr</td><td>NVKD-08 Huỳnh Kim Ngân</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="PENDING_MANAGER_APPROVAL"><td><strong>CL-005</strong></td><td><strong>Cty CP DV Logistics Đông Á (DAL)</strong><br><span class="sub">Khớp HIST-002 • Trễ SLA 15 ngày</span></td><td>Hội thảo • Hà Nội</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>95 tr</td><td>NVKD-01 Nguyễn Minh Quân</td><td><span class="pill p-danger">Chờ duyệt SLA</span></td></tr>
+              <tr data-stage="PENDING_MANAGER_APPROVAL"><td><strong>CL-006</strong></td><td><strong>Minh Tâm Tech (MT Solutions)</strong><br><span class="sub">Khớp HIST-003 • Tranh chấp HN/HCM</span></td><td>Website • Hà Nội/HCM</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>85 tr</td><td>NVKD-06 Đặng Thu Hiền</td><td><span class="pill p-plum">Tranh chấp</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-013</strong></td><td><strong>Cty TNHH Giáo dục Anh ngữ Sao Mai</strong></td><td>Hội thảo • TP.HCM</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>85 tr</td><td>NVKD-06 Đặng Thu Hiền</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-007</strong></td><td><strong>An Phát Co.</strong><br><span class="sub">Giữ continuity HIST-001 (3 ngày trước)</span></td><td>Hội thảo • TP.HCM</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>75 tr</td><td>NVKD-04 Phạm Thảo Vy</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-014</strong></td><td><strong>Cty CP Thiết bị Y tế An Khang</strong><br><span class="sub">Gộp 2: An Khang Medical (tránh cộng trùng 55tr)</span></td><td>Web, HT • Hà Nội</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>100</strong> • A</td><td>60 tr</td><td>NVKD-03 Lê Quang Khải</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-009</strong></td><td><strong>Cty CP Du lịch &amp; KS Biển Xanh</strong></td><td>Website • Đà Nẵng</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>96</strong> • A</td><td>90 tr</td><td>NVKD-07 Bùi Quốc Bảo</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-015</strong></td><td><strong>Cty TNHH PM &amp; Tư vấn Hướng Dương</strong></td><td>Campaign • TP.HCM</td><td><strong>NV-SUITE</strong></td><td>100%</td><td><strong>96</strong> • A</td><td>45 tr</td><td>NVKD-06 Đặng Thu Hiền</td><td><span class="pill p-ok">Giao ngay</span></td></tr>
+              <tr data-stage="ASSIGNED_TO_REP"><td><strong>CL-011</strong></td><td><strong>Cty TNHH Kiến trúc &amp; XD Thành Công</strong></td><td>Website • Hà Nội</td><td><strong>NV-ACC</strong></td><td>88%</td><td><strong>83</strong> • A</td><td>Chưa rõ</td><td>NVKD-01 Nguyễn Minh Quân</td><td><span class="pill p-ok">Giao → HITL 2</span></td></tr>
+              <tr data-stage="PENDING_MANAGER_APPROVAL"><td><strong>CL-008</strong></td><td><strong>Việt Food</strong><br><span class="sub">Khớp HIST-004 qua SĐT • Trễ SLA 22 ngày</span></td><td>Campaign • Bình Dương</td><td><strong>NV-INV</strong></td><td>50%</td><td><strong>63</strong> • B</td><td>Chưa rõ</td><td>NVKD-04 Phạm Thảo Vy</td><td><span class="pill p-danger">HITL 1 • Trễ SLA</span></td></tr>
+              <tr data-stage="DRAFT_FOR_ENRICHMENT"><td><strong>CL-004</strong></td><td><strong>Cty TNHH Thời trang Mây Trắng</strong><br><span class="sub">Thiếu quy mô, ngân sách, timeline</span></td><td>Campaign • Hà Nội</td><td><strong>NV-INV</strong></td><td>63%</td><td><strong>60</strong> • B</td><td>Chưa rõ</td><td>NVKD-02 Trần Ngọc Mai</td><td><span class="pill p-pink">Bước 5 Draft → HITL 2</span></td></tr>
+              <tr data-stage="DISQUALIFIED_OUT_OF_SCOPE"><td><strong>CL-002</strong></td><td><strong>Tập đoàn Y tế Quốc tế Đông Phương</strong><br><span class="sub">Chặn bẫy OOS-HIS (600 giường, PACS/HL7)</span></td><td>Website • Hà Nội</td><td>Ngoài PV</td><td>100%</td><td><strong>14</strong> • D</td><td>1.8 tỷ</td><td>Không giao</td><td><span class="pill p-muted">Bẫy NS • Loại</span></td></tr>
+              <tr data-stage="DISQUALIFIED_OUT_OF_SCOPE"><td><strong>CL-003</strong></td><td><strong>Nhà máy Cơ khí Chính xác Trường Sơn</strong><br><span class="sub">Chặn bẫy OOS-MES (120 CNC, PLC/SAP)</span></td><td>Campaign • Bình Dương</td><td>Ngoài PV</td><td>100%</td><td><strong>14</strong> • D</td><td>950 tr</td><td>Không giao</td><td><span class="pill p-muted">Bẫy NS • Loại</span></td></tr>
+              <tr data-stage="DISQUALIFIED_OUT_OF_SCOPE"><td><strong>CL-012</strong></td><td><strong>Tiệm bánh ngọt Sunny</strong><br><span class="sub">Micro 4 người, xin free / outsource app</span></td><td>Website • TP.HCM</td><td>Ngoài PV</td><td>100%</td><td><strong>11</strong> • D</td><td>5 tr</td><td>Không giao</td><td><span class="pill p-muted">Sai PK • Loại</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- WORKFLOW 5 STEPS + HITL + VARIABLES -->
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="sec-badge badge-blue">PHẦN 07 • SƠ ĐỒ QUY TRÌNH</span>
+            <h2>7. Kiến trúc Quy trình 5 Bước (AI Agent + HITL 1 &amp; 2) &amp; Các Biến số Kiểm soát</h2>
+            <p class="sub">Sơ đồ trực quan từ Nhập Sheet → Làm sạch → Phân tích → Con người duyệt → Xuất 5 Đầu ra</p>
+          </div>
+        </div>
+
+        <!-- Master Visual Flowchart Diagram in Web Report -->
+        <div style="width:100%;overflow-x:auto;padding:6px 0 16px;display:flex;justify-content:center;">
+          <svg viewBox="0 0 890 1210" width="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:860px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+            <defs>
+              <filter id="rCardShadow" x="-6%" y="-6%" width="112%" height="116%" filterUnits="userSpaceOnUse">
+                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1e1633" flood-opacity="0.06"/>
+              </filter>
+              <linearGradient id="rAiCardGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f0f9ff"/>
+                <stop offset="100%" stop-color="#e0f2fe"/>
+              </linearGradient>
+              <linearGradient id="rInputCardGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fdf4ff"/>
+                <stop offset="100%" stop-color="#faf5ff"/>
+              </linearGradient>
+              <linearGradient id="rHitlCardGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fffbeb"/>
+                <stop offset="100%" stop-color="#fef3c7"/>
+              </linearGradient>
+              <linearGradient id="rDangerCardGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff5f5"/>
+                <stop offset="100%" stop-color="#ffe4e6"/>
+              </linearGradient>
+              <marker id="rArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6"/>
+              </marker>
+              <marker id="rArrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669"/>
+              </marker>
+              <marker id="rArrowRose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#e11d48"/>
+              </marker>
+              <marker id="rArrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#d97706"/>
+              </marker>
+            </defs>
+
+            <!-- Flowchart Background Board -->
+            <rect x="2" y="2" width="886" height="1206" rx="20" fill="#ffffff" stroke="#f1e8f0" stroke-width="1.5"/>
+
+            <!-- Left Phase Labels Lane Divider -->
+            <line x1="154" y1="18" x2="154" y2="1192" stroke="#f1e8f0" stroke-width="1" stroke-dasharray="4 4"/>
+
+            <!-- Level 0: START -->
+            <rect x="255" y="16" width="250" height="34" rx="17" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="380" y="38" text-anchor="middle" fill="#15803d" font-size="12" font-weight="800">BẮT ĐẦU: Tiếp nhận ~700 leads/tuần</text>
+            <line x1="380" y1="50" x2="380" y2="76" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 1: INPUT -->
+            <rect x="34" y="104" width="94" height="26" rx="13" fill="#f3e8ff" stroke="#a855f7" stroke-width="1"/>
+            <text x="81" y="121" text-anchor="middle" fill="#6b21a8" font-size="11" font-weight="800">INPUT</text>
+
+            <rect x="180" y="76" width="400" height="96" rx="14" fill="url(#rInputCardGrad)" stroke="#c084fc" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="102" fill="#581c87" font-size="13" font-weight="800">📄 DỮ LIỆU ĐẦU VÀO (INPUT)</text>
+            <rect x="466" y="88" width="98" height="20" rx="6" fill="#f3e8ff"/>
+            <text x="515" y="102" text-anchor="middle" fill="#7e22ce" font-size="10.5" font-weight="700">~700 leads/tuần</text>
+
+            <text x="200" y="128" fill="#5c5470" font-size="11.5">• Hồ sơ đăng ký (Web, Hội thảo, Camp)</text>
+            <text x="200" y="148" fill="#5c5470" font-size="11.5">• Lịch sử liên hệ CRM (HIST-001..005)</text>
+            <text x="405" y="128" fill="#5c5470" font-size="11.5">• Danh mục 5 SP &amp; Quy tắc nghiệp vụ</text>
+            <text x="405" y="148" fill="#5c5470" font-size="11.5">• Danh sách 8 Sales &amp; Vùng/Ngành</text>
+            <line x1="380" y1="172" x2="380" y2="198" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 2: BƯỚC 1 -->
+            <rect x="34" y="222" width="94" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="81" y="239" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="800">BƯỚC 1</text>
+
+            <rect x="180" y="198" width="400" height="74" rx="14" fill="url(#rAiCardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="224" fill="#0369a1" font-size="12.5" font-weight="800">⚡ [AI] CHUẨN HÓA &amp; KHỬ TRÙNG LẶP (Deduplication)</text>
+            <rect x="472" y="210" width="92" height="20" rx="6" fill="#e0f2fe"/>
+            <text x="518" y="224" text-anchor="middle" fill="#0284c7" font-size="10.5" font-weight="700">Gộp Alias/MST</text>
+            <text x="200" y="246" fill="#5c5470" font-size="11.5">Chuẩn hóa tên/SĐT/Email • Đối chiếu chéo đa kênh</text>
+            <text x="200" y="262" fill="#5c5470" font-size="11">Hợp nhất bản ghi trùng cùng công ty, giữ toàn bộ raw leads</text>
+            <line x1="380" y1="272" x2="380" y2="298" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 3: DECISION 1 & DNC BRANCH -->
+            <polygon points="380,298 480,330 380,362 280,330" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="380" y="326" text-anchor="middle" fill="#92400e" font-size="11.5" font-weight="700">Kiểm tra lịch sử</text>
+            <text x="380" y="341" text-anchor="middle" fill="#92400e" font-size="11.5" font-weight="700">liên hệ (CRM)?</text>
+
+            <!-- Branch No -> DNC -->
+            <line x1="480" y1="330" x2="636" y2="330" stroke="#e11d48" stroke-width="2" marker-end="url(#rArrowRose)"/>
+            <rect x="540" y="312" width="36" height="18" rx="5" fill="#ffe4e6"/>
+            <text x="558" y="325" text-anchor="middle" fill="#be123c" font-size="10" font-weight="800">No</text>
+
+            <rect x="640" y="306" width="224" height="48" rx="12" fill="url(#rDangerCardGrad)" stroke="#f43f5e" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="654" y="327" fill="#be123c" font-size="11.5" font-weight="800">🚫 Danh sách không liên hệ (DNC)</text>
+            <text x="654" y="343" fill="#be123c" font-size="10.5">Khách đã chốt / từ chối • Tránh gọi rác</text>
+
+            <!-- Branch Yes -> BƯỚC 2 -->
+            <line x1="380" y1="362" x2="380" y2="396" stroke="#059669" stroke-width="2" marker-end="url(#rArrowGreen)"/>
+            <rect x="392" y="370" width="38" height="18" rx="5" fill="#d1fae5"/>
+            <text x="411" y="383" text-anchor="middle" fill="#047857" font-size="10" font-weight="800">Yes</text>
+
+            <!-- Level 4: BƯỚC 2 -->
+            <rect x="34" y="422" width="94" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="81" y="439" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="800">BƯỚC 2</text>
+
+            <rect x="180" y="396" width="400" height="74" rx="14" fill="url(#rAiCardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="422" fill="#0369a1" font-size="12.5" font-weight="800">⚡ [AI] TỔNG HỢP NHU CẦU &amp; KIỂM TRA THIẾU HỤT</text>
+            <rect x="472" y="408" width="92" height="20" rx="6" fill="#e0f2fe"/>
+            <text x="518" y="422" text-anchor="middle" fill="#0284c7" font-size="10.5" font-weight="700">Khớp 5 SP</text>
+            <text x="200" y="444" fill="#5c5470" font-size="11.5">Gộp nhu cầu liên phòng ban • So khớp 5 sản phẩm SME</text>
+            <text x="200" y="460" fill="#5c5470" font-size="11">Phát hiện thiếu: Ngân sách, Quy mô, Thời hạn, Quyết định</text>
+            <line x1="380" y1="470" x2="380" y2="498" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 5: BƯỚC 3 -->
+            <rect x="34" y="524" width="94" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="81" y="541" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="800">BƯỚC 3</text>
+
+            <rect x="180" y="498" width="400" height="74" rx="14" fill="url(#rAiCardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="524" fill="#0369a1" font-size="12.5" font-weight="800">⚡ [AI] CHẤM ĐIỂM ƯU TIÊN (Lead Scoring)</text>
+            <rect x="470" y="510" width="94" height="20" rx="6" fill="#e0f2fe"/>
+            <text x="517" y="524" text-anchor="middle" fill="#0284c7" font-size="10.5" font-weight="700">0 - 100 Điểm</text>
+            <text x="200" y="546" fill="#5c5470" font-size="11.5">Phân loại: Cao (Hot ≥80) • Trung bình (Warm 60-79) • Thấp (&lt;60)</text>
+            <text x="200" y="562" fill="#be123c" font-size="11" font-weight="600">Quy tắc chống bẫy: Sai sản phẩm khóa trần ≤22đ (Hạng D)</text>
+            <line x1="380" y1="572" x2="380" y2="600" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 6: BƯỚC 4 -->
+            <rect x="34" y="626" width="94" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="81" y="643" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="800">BƯỚC 4</text>
+
+            <rect x="180" y="600" width="400" height="74" rx="14" fill="url(#rAiCardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="626" fill="#0369a1" font-size="12.5" font-weight="800">⚡ [AI] ĐỀ XUẤT PHÂN CÔNG SALES (Routing)</text>
+            <rect x="472" y="612" width="92" height="20" rx="6" fill="#e0f2fe"/>
+            <text x="518" y="626" text-anchor="middle" fill="#0284c7" font-size="10.5" font-weight="700">8 NVKD</text>
+            <text x="200" y="648" fill="#5c5470" font-size="11.5">Đối chiếu Ngành nghề &amp; Khu vực phụ trách 8 Nhân viên</text>
+            <text x="200" y="664" fill="#5c5470" font-size="11">Cân bằng tải SLA (công suất 730/tuần), giữ liên hệ lịch sử</text>
+            <line x1="380" y1="674" x2="380" y2="702" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 7: DECISION 2 & EXCEPTIONS BRANCH -->
+            <polygon points="380,702 490,736 380,770 270,736" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="380" y="731" text-anchor="middle" fill="#92400e" font-size="11.5" font-weight="700">Phát hiện ngoại lệ /</text>
+            <text x="380" y="747" text-anchor="middle" fill="#92400e" font-size="11.5" font-weight="700">Ranh giới quy tắc?</text>
+
+            <!-- Branch Yes/Xung đột -> HITL 1 -->
+            <path d="M 490,724 L 565,724 L 565,692 L 636,692" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#rArrowAmber)"/>
+            <rect x="525" y="700" width="76" height="18" rx="5" fill="#fef3c7"/>
+            <text x="563" y="713" text-anchor="middle" fill="#b45309" font-size="9.5" font-weight="800">Yes / Xung đột</text>
+
+            <rect x="640" y="666" width="224" height="54" rx="12" fill="url(#rHitlCardGrad)" stroke="#f59e0b" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="654" y="687" fill="#92400e" font-size="11.5" font-weight="800">👤 [HITL 1] Chờ Trưởng phòng KD</text>
+            <text x="654" y="705" fill="#b45309" font-size="10.5">Xung đột địa bàn • Trễ SLA &gt;7d • VIP</text>
+
+            <!-- Feedforward loop from HITL 1 to BƯỚC 5 -->
+            <path d="M 752,720 L 752,856 L 584,856" fill="none" stroke="#059669" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#rArrowGreen)"/>
+            <rect x="715" y="784" width="74" height="18" rx="5" fill="#dcfce7"/>
+            <text x="752" y="796" text-anchor="middle" fill="#15803d" font-size="9.5" font-weight="700">Duyệt &amp; Giao</text>
+
+            <!-- Branch Không khớp Sales -> UNMATCHED -->
+            <path d="M 490,748 L 565,748 L 565,774 L 636,774" fill="none" stroke="#e11d48" stroke-width="2" marker-end="url(#rArrowRose)"/>
+            <rect x="522" y="762" width="82" height="18" rx="5" fill="#ffe4e6"/>
+            <text x="563" y="775" text-anchor="middle" fill="#be123c" font-size="9.5" font-weight="800">Không khớp</text>
+
+            <rect x="640" y="750" width="224" height="48" rx="12" fill="url(#rDangerCardGrad)" stroke="#f43f5e" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="654" y="771" fill="#be123c" font-size="11.5" font-weight="800">🚫 Khách chưa có người phù hợp</text>
+            <text x="654" y="787" fill="#be123c" font-size="10.5">Ngoài vùng/ngành 8 Sales • Gán sau</text>
+
+            <!-- Branch Đạt chuẩn -> BƯỚC 5 -->
+            <line x1="380" y1="770" x2="380" y2="824" stroke="#059669" stroke-width="2" marker-end="url(#rArrowGreen)"/>
+            <rect x="392" y="788" width="58" height="18" rx="5" fill="#d1fae5"/>
+            <text x="421" y="801" text-anchor="middle" fill="#047857" font-size="10" font-weight="800">Đạt chuẩn</text>
+
+            <!-- Level 8: BƯỚC 5 -->
+            <rect x="34" y="850" width="94" height="26" rx="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+            <text x="81" y="867" text-anchor="middle" fill="#0369a1" font-size="11" font-weight="800">BƯỚC 5</text>
+
+            <rect x="180" y="824" width="400" height="74" rx="14" fill="url(#rAiCardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="850" fill="#0369a1" font-size="12.5" font-weight="800">⚡ [AI] TẠO HÀNH ĐỘNG TIẾP THEO &amp; BẢN NHÁP</text>
+            <rect x="472" y="836" width="92" height="20" rx="6" fill="#e0f2fe"/>
+            <text x="518" y="850" text-anchor="middle" fill="#0284c7" font-size="10.5" font-weight="700">Next Action</text>
+            <text x="200" y="872" fill="#5c5470" font-size="11.5">Lên kế hoạch tiếp cận: Gọi trong 2h / Đặt lịch Demo / Khảo sát</text>
+            <text x="200" y="888" fill="#5c5470" font-size="11">Tự động soạn sẵn bản nháp Email + Zalo OA hoặc câu hỏi khai thác</text>
+            <line x1="380" y1="898" x2="380" y2="926" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 9: [HITL 2] -->
+            <rect x="34" y="946" width="94" height="26" rx="13" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+            <text x="81" y="963" text-anchor="middle" fill="#92400e" font-size="11" font-weight="800">[HITL 2]</text>
+
+            <rect x="180" y="926" width="400" height="60" rx="14" fill="url(#rHitlCardGrad)" stroke="#f59e0b" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="952" fill="#92400e" font-size="12.5" font-weight="800">👤 [HITL 2] Sales kiểm duyệt trước khi gửi</text>
+            <rect x="456" y="938" width="108" height="20" rx="6" fill="#fef3c7"/>
+            <text x="510" y="952" text-anchor="middle" fill="#b45309" font-size="10.5" font-weight="700">Người thực hiện</text>
+            <text x="200" y="972" fill="#78350f" font-size="11">Sales kiểm tra hồ sơ, cá nhân hóa văn phong và bấm duyệt gửi</text>
+            <line x1="380" y1="986" x2="380" y2="1014" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 10: OUTPUT -->
+            <rect x="34" y="1066" width="94" height="26" rx="13" fill="#f3e8ff" stroke="#a855f7" stroke-width="1"/>
+            <text x="81" y="1083" text-anchor="middle" fill="#6b21a8" font-size="11" font-weight="800">OUTPUT</text>
+
+            <rect x="180" y="1014" width="400" height="114" rx="14" fill="url(#rInputCardGrad)" stroke="#c084fc" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="200" y="1038" fill="#581c87" font-size="13" font-weight="800">📁 ĐẦU RA TỔNG HỢP &amp; BÁO CÁO (OUTPUT)</text>
+            <rect x="472" y="1024" width="92" height="20" rx="6" fill="#f3e8ff"/>
+            <text x="518" y="1038" text-anchor="middle" fill="#7e22ce" font-size="10.5" font-weight="700">5 Đầu ra</text>
+
+            <text x="200" y="1062" fill="#5c5470" font-size="11.5">• 1. Hồ sơ khách sau gộp duy nhất</text>
+            <text x="200" y="1080" fill="#5c5470" font-size="11.5">• 2. Danh sách việc 8 Sales (Task)</text>
+            <text x="200" y="1098" fill="#5c5470" font-size="11.5">• 3. Danh sách ngoại lệ (DNC/Chờ duyệt)</text>
+            <text x="395" y="1062" fill="#5c5470" font-size="11.5">• 4. Dashboard thống kê trực quan</text>
+            <text x="395" y="1080" fill="#5c5470" font-size="11.5">• 5. Nhật ký truy vết (Audit Log)</text>
+            <text x="395" y="1098" fill="#5c5470" font-size="11.5">• Xuất Excel (.xlsx), CSV, Web HTML</text>
+            <line x1="380" y1="1128" x2="380" y2="1154" stroke="#8b5cf6" stroke-width="2" marker-end="url(#rArrow)"/>
+
+            <!-- Level 11: END -->
+            <rect x="300" y="1154" width="160" height="34" rx="17" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5" filter="url(#rCardShadow)"/>
+            <text x="380" y="1176" text-anchor="middle" fill="#334155" font-size="12" font-weight="800">KẾT THÚC</text>
+          </svg>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin-bottom:14px;font-size:12px;">
+          <div style="background:#fff9fc;border:1px solid #fbcfe8;border-radius:10px;padding:10px;"><strong>Bước 1 [AI] &amp; DNC</strong><br><span class="sub">Chuẩn hóa, khử trùng đa kênh &amp; đối chiếu CRM → nhánh <code>No</code> đưa vào <strong>DNC</strong>.</span></div>
+          <div style="background:#fff9fc;border:1px solid #fbcfe8;border-radius:10px;padding:10px;"><strong>Bước 2 [AI] Thiếu hụt</strong><br><span class="sub">Gộp nhu cầu liên phòng ban, so khớp 5 SP &amp; bắt thiếu Ngân sách, Quy mô, Người quyết định.</span></div>
+          <div style="background:#fff9fc;border:1px solid #fbcfe8;border-radius:10px;padding:10px;"><strong>Bước 3 [AI] Scoring</strong><br><span class="sub">Phân hạng <strong>Cao (Hot) / Trung bình (Warm) / Thấp (Cold)</strong>, chặn bẫy NS sai SP.</span></div>
+          <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px;padding:10px;"><strong>Bước 4 + [HITL 1]</strong><br><span class="sub">Định tuyến 8 Sales; rẽ nhánh <strong>Không khớp Sales</strong> &amp; chuyển <strong>Trưởng phòng KD</strong> duyệt xung đột/VIP/SLA.</span></div>
+          <div style="background:#f0fdf9;border:1px solid #a7f3d0;border-radius:10px;padding:10px;"><strong>Bước 5 + [HITL 2] → 5 Outputs</strong><br><span class="sub">Tạo Next Action &amp; Draft Email/Zalo → <strong>Sales kiểm duyệt</strong> → Xuất Hồ sơ gộp, Việc 8 Sales, Ngoại lệ, Dashboard, Audit Log.</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;font-size:12px;">
+          <div style="background:#fff;border:1px solid #f1e8f0;border-radius:10px;padding:10px;"><strong>Biến số Dữ liệu Đầu vào:</strong> Nguồn kênh, tỷ lệ alias/trùng lặp, độ thiếu trường thông tin, cờ <code>dnc_flag</code> &amp; <code>dispute_flag</code> CRM.</div>
+          <div style="background:#fff;border:1px solid #f1e8f0;border-radius:10px;padding:10px;"><strong>Biến số Quy tắc &amp; Ngưỡng:</strong> Trọng số <code>40/20/20/10/10</code>, trần <code>22đ</code> Out-of-Scope, ngưỡng VIP <code>250 tr</code>, ngưỡng SLA <code>7 ngày</code>.</div>
+          <div style="background:#fff;border:1px solid #f1e8f0;border-radius:10px;padding:10px;"><strong>Biến số Năng lực &amp; HITL:</strong> Tải CRM <code>8 NVKD</code> (công suất 730/tuần), vùng/ngành phủ, quyết định Trưởng phòng <code>[HITL 1]</code> &amp; kênh gửi <code>[HITL 2]</code>.</div>
+        </div>
+      </section>
+
+      <!-- ACTION ROADMAP -->
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <span class="sec-badge badge-mint">PHẦN 08 • LỘ TRÌNH THỰC THI</span>
+            <h2>8. Lộ trình Đề xuất Triển khai</h2>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+          <div style="background:#fff5f7;border:1px solid #fecdd3;border-radius:12px;padding:12px;">
+            <span class="pill p-danger">Ngay hôm nay (2h)</span>
+            <p style="font-size:12.5px;margin-top:8px;"><strong>Duyệt 3 ca vượt quyền:</strong> Đôn đốc gọi Đông Á (95tr), điều chuyển Việt Food khỏi NVKD-04, giao Minh Tâm về NVKD-06.</p>
+          </div>
+          <div style="background:#fdf2f8;border:1px solid #fbcfe8;border-radius:12px;padding:12px;">
+            <span class="pill p-pink">Trong 24 giờ</span>
+            <p style="font-size:12.5px;margin-top:8px;"><strong>Chạm 100% Hạng A &amp; gửi Draft:</strong> Chào NV-SUITE cho Thịnh Vượng (140tr) &amp; Mekong (135tr); gửi 3 câu hỏi tự động cho Mây Trắng.</p>
+          </div>
+          <div style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;padding:12px;">
+            <span class="pill p-plum">Trong 7 ngày</span>
+            <p style="font-size:12.5px;margin-top:8px;"><strong>Chống quá tải cục bộ:</strong> Kích hoạt chuyển tải khi NVKD chạm 80% và thống nhất quy chế chia KPI Bắc–Nam.</p>
+          </div>
+          <div style="background:#f0fdf9;border:1px solid #a7f3d0;border-radius:12px;padding:12px;">
+            <span class="pill p-ok">Trong 30 ngày</span>
+            <p style="font-size:12.5px;margin-top:8px;"><strong>Chặn rác từ Web &amp; dọn CRM:</strong> Thêm trường Ngành + Quy mô lên form Web; đóng ~200 CRM backlog/tuần cho mục tiêu 700 leads.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        Nam Việt AI Agent (AI301 — Đề dự án 02) • Xuất bản từ dữ liệu chuẩn hóa &amp; quy tắc NV-RULES-2026.11 • Dùng Dashboard tương tác để tải Google Sheet / CSV / XLSX mới.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll("#reportFilterTabs .tab-btn");
+      var rows = document.querySelectorAll("#reportTable tbody tr");
+      var cap = document.getElementById("tblCaption");
+      var labels = {
+        ALL: "Đang hiển thị toàn bộ 15 doanh nghiệp sau chuẩn hóa và hợp nhất trùng lặp",
+        ASSIGNED_TO_REP: "Đang lọc 8 doanh nghiệp Hạng A đạt chuẩn giao ngay cho NVKD",
+        PENDING_MANAGER_APPROVAL: "Đang lọc 3 ca khẩn cấp chờ Trưởng phòng duyệt (trễ SLA / tranh chấp)",
+        DRAFT_FOR_ENRICHMENT: "Đang lọc 1 doanh nghiệp thiếu thông tin được tạo câu hỏi Draft bổ sung",
+        DISQUALIFIED_OUT_OF_SCOPE: "Đang lọc 3 doanh nghiệp Hạng D bị chặn ngoài phạm vi phần mềm SME"
+      };
+      tabs.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var f = btn.getAttribute("data-filter");
+          tabs.forEach(function (t) { t.classList.toggle("active", t === btn); });
+          rows.forEach(function (tr) {
+            var st = tr.getAttribute("data-stage");
+            tr.classList.toggle("hidden-row", f !== "ALL" && st !== f);
+          });
+          if (cap && labels[f]) cap.textContent = labels[f];
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+

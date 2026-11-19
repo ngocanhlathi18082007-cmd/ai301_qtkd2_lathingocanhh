@@ -1,0 +1,211 @@
+{
+  "company": "Công ty Phần mềm Nam Việt",
+  "target_segment": "Doanh nghiệp vừa và nhỏ (SME: 10 - 500 nhân sự tại Việt Nam)",
+  "products": [
+    {
+      "code": "NV-ACC",
+      "name": "NamViet FinAcc (Kế toán & Hóa đơn điện tử SME)",
+      "description": "Phần mềm kế toán tổng hợp, kê khai thuế, hóa đơn điện tử, công nợ và báo cáo tài chính dành cho SME.",
+      "ideal_industries": [
+        "Thương mại",
+        "Bán lẻ & F&B",
+        "Dịch vụ B2B",
+        "Xây dựng & Kỹ thuật",
+        "Sản xuất nhẹ"
+      ],
+      "ideal_size_min": 5,
+      "ideal_size_max": 350,
+      "typical_budget_min_vnd": 15000000,
+      "typical_budget_max_vnd": 90000000,
+      "keywords": [
+        "kế toán",
+        "hóa đơn điện tử",
+        "hóa đơn",
+        "thuế",
+        "báo cáo tài chính",
+        "công nợ",
+        "sổ sách",
+        "chi phí",
+        "tài chính",
+        "finacc",
+        "misa",
+        "fast"
+      ]
+    },
+    {
+      "code": "NV-CRM",
+      "name": "NamViet SalesCRM (Quản lý Bán hàng & CSKH)",
+      "description": "Phần mềm quản lý pipeline bán hàng, lịch sử tương tác khách hàng, báo giá, KPI nhân viên kinh doanh và chăm sóc sau bán.",
+      "ideal_industries": [
+        "Dịch vụ B2B",
+        "Thương mại",
+        "Công nghệ",
+        "Giáo dục & Tư vấn",
+        "Bất động sản SME"
+      ],
+      "ideal_size_min": 10,
+      "ideal_size_max": 300,
+      "typical_budget_min_vnd": 18000000,
+      "typical_budget_max_vnd": 110000000,
+      "keywords": [
+        "crm",
+        "quản lý khách hàng",
+        "chăm sóc khách hàng",
+        "bán hàng",
+        "pipeline",
+        "kinh doanh",
+        "báo giá",
+        "telesale",
+        "lead",
+        "khách hàng tiềm năng",
+        "sales"
+      ]
+    },
+    {
+      "code": "NV-HRM",
+      "name": "NamViet People (Nhân sự, Chấm công & Tính lương)",
+      "description": "Phần mềm quản lý hồ sơ nhân sự, chấm công GPS/FaceID, tính lương tự động, BHXH và đánh giá KPI nội bộ.",
+      "ideal_industries": [
+        "Bán lẻ & F&B",
+        "Dịch vụ B2B",
+        "Sản xuất nhẹ",
+        "Công nghệ",
+        "Y tế tư nhân"
+      ],
+      "ideal_size_min": 20,
+      "ideal_size_max": 500,
+      "typical_budget_min_vnd": 20000000,
+      "typical_budget_max_vnd": 130000000,
+      "keywords": [
+        "nhân sự",
+        "hrm",
+        "chấm công",
+        "tính lương",
+        "bảng lương",
+        "tuyển dụng",
+        "hợp đồng lao động",
+        "bhxh",
+        "kpi nhân viên",
+        "ca làm việc",
+        "ca kíp"
+      ]
+    },
+    {
+      "code": "NV-INV",
+      "name": "NamViet StockOPS (Quản lý Kho, Mua hàng & Chuỗi bán lẻ)",
+      "description": "Phần mềm xuất nhập tồn, quản lý lô/hạn sử dụng, mua hàng nhà cung cấp, đồng bộ POS đa chi nhánh.",
+      "ideal_industries": [
+        "Thương mại",
+        "Bán lẻ & F&B",
+        "Kho vận & Logistics",
+        "Sản xuất nhẹ",
+        "Nông sản & Phân phối"
+      ],
+      "ideal_size_min": 10,
+      "ideal_size_max": 350,
+      "typical_budget_min_vnd": 22000000,
+      "typical_budget_max_vnd": 140000000,
+      "keywords": [
+        "quản lý kho",
+        "tồn kho",
+        "xuất nhập tồn",
+        "kho vận",
+        "pos",
+        "bán lẻ",
+        "chi nhánh",
+        "cửa hàng",
+        "mua hàng",
+        "đơn hàng",
+        "mã vạch",
+        "chuỗi"
+      ]
+    },
+    {
+      "code": "NV-SUITE",
+      "name": "NamViet All-in-One SME Suite (Hợp nhất Tài chính - CRM - Kho - Nhân sự)",
+      "description": "Bộ giải pháp quản trị tổng thể chuẩn hóa cho doanh nghiệp SME muốn đồng bộ dữ liệu liên phòng ban trên một nền tảng.",
+      "ideal_industries": [
+        "Thương mại",
+        "Sản xuất nhẹ",
+        "Dịch vụ B2B",
+        "Bán lẻ & F&B",
+        "Kho vận & Logistics",
+        "Xây dựng & Kỹ thuật"
+      ],
+      "ideal_size_min": 25,
+      "ideal_size_max": 500,
+      "typical_budget_min_vnd": 60000000,
+      "typical_budget_max_vnd": 300000000,
+      "keywords": [
+        "quản trị tổng thể",
+        "đồng bộ phòng ban",
+        "erp sme",
+        "all-in-one",
+        "kế toán và kho",
+        "bán hàng và kho",
+        "hợp nhất",
+        "chuyển đổi số toàn diện"
+      ]
+    }
+  ],
+  "out_of_scope_patterns": [
+    {
+      "pattern_id": "OOS-HIS",
+      "label": "Phần mềm Bệnh viện / Y tế chuyên sâu (HIS/RIS/PACS)",
+      "keywords": [
+        "his",
+        "bệnh án điện tử",
+        "quản lý bệnh viện",
+        "phần mềm bệnh viện",
+        "dicom",
+        "hl7",
+        "xét nghiệm",
+        "phòng khám đa khoa lớn",
+        "giường bệnh",
+        "ris/pacs"
+      ],
+      "reason": "Nam Việt chỉ cung cấp phần mềm quản trị SME (Kế toán/CRM/HRM/Kho), không có phân hệ HIS chuyên ngành bệnh viện."
+    },
+    {
+      "pattern_id": "OOS-MES",
+      "label": "Hệ thống MES / Tự động hóa dây chuyền nhà máy lớn (PLC/SCADA)",
+      "keywords": [
+        "mes",
+        "plc",
+        "scada",
+        "dây chuyền cnc",
+        "sap s/4hana",
+        "erp sản xuất nặng",
+        "iot nhà máy",
+        "điều khiển máy"
+      ],
+      "reason": "Nam Việt không cung cấp phần mềm MES điều khiển thiết bị/dây chuyền công nghiệp nặng hoặc SAP Enterprise."
+    },
+    {
+      "pattern_id": "OOS-CORE-FIN",
+      "label": "Core Banking / Chứng khoán / Ví điện tử",
+      "keywords": [
+        "core banking",
+        "chứng khoán",
+        "ví điện tử",
+        "thanh toán liên ngân hàng",
+        "cổng thanh toán"
+      ],
+      "reason": "Ngoài phạm vi giải pháp quản trị doanh nghiệp SME của Nam Việt."
+    },
+    {
+      "pattern_id": "OOS-OUTSOURCE",
+      "label": "Gia công App Mobile / Game / Hạ tầng phần cứng thuần túy",
+      "keywords": [
+        "gia công app",
+        "viết app riêng",
+        "outsource",
+        "làm game",
+        "thi công cáp mạng",
+        "mua server vật lý",
+        "lắp đặt camera"
+      ],
+      "reason": "Nam Việt cung cấp phần mềm SaaS quản lý SME chuẩn hóa, không nhận dự án gia công phần mềm riêng hoặc bán phần cứng thuần."
+    }
+  ]
+}
